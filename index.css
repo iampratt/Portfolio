@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+.mask{
+  mask-image: url(/public/mask.svg);
+  background-color: #eb5939;
+  mask-repeat: no-repeat;
+  color: black;
+  z-index: 100;
+}
