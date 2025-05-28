@@ -1,9 +1,14 @@
 
 import gsap from "gsap"
+import ScrollSmoother from "gsap/ScrollSmoother"
+import ScrollTrigger from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
+import Lenis from "lenis"
 import Mgss from "./screens/Mgss"
-import MaskMgss from "./screens/masks/maskMgss"
-import  useStore  from "./store/store"
+import MaskMgss from "./screens/masks/MaskMgss"
+import About from "./screens/About"
+import MaskAbout from "./screens/masks/MaskAbout"
+import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
 
 
@@ -11,7 +16,17 @@ function Layout() {
     const maskSize = useStore().maskSize;
     const {x, y}=useMousePosition()
 
-    useGSAP(()=>{        
+    useGSAP(()=>{ 
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother)  
+        const lenis=new Lenis({
+            smoothWheel:true,
+            duration:2
+        })   
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
         gsap.to('.mask',{
             maskPosition: `${x-maskSize/2}px ${y-maskSize/2}px`,
             maskSize: `${maskSize}px`,
@@ -35,120 +50,124 @@ function Layout() {
 
 
   return (
-    <div className="relative w-full">
-        <div className="absolute h-screen w-full">
-        <div>
-            <Mgss />
-        </div>
-        <div className="fixed">
-            {/* Logo */}
-            <img
-            className="fixed w-10 h-10 top-[63px] left-[58px]"
-            alt="Icon"
-            src="/icon.svg"
-            />
-
-            {/* Navigation */}
-            <nav className="fixed top-[59px] right-[59px]">
-            <ul className="flex flex-col gap-2.5">
-                {navLinks.map((link) => (
-                <li key={link.id} className="relative">
-                    <div className="[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98]">
-                    {link.label}
-                    </div>
-                    <div className="absolute top-0 left-0 [font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b8ac9980]">
-                    {link.label}
-                    </div>
-                </li>
-                ))}
-            </ul>
-            </nav>
-
-            {/* Social media links */}
-            <div className="fixed top-[622px] left-12 flex flex-col gap-[30px] p-2">
-            {socialIcons.map((icon) => (
+    <div className="relative w-full scroll-smooth">
+        <div className="absolute w-full">
+            <div>
+                <Mgss />
+                <About />
+                <div className="h-screen"/>
+            </div>
+            <div className="fixed">
+                {/* Logo */}
                 <img
-                key={icon.id}
-                className="w-5 h-5"
-                alt={icon.alt}
-                src={icon.src}
+                    className="fixed w-10 h-10 top-[63px] left-[58px]"
+                    alt="Icon"
+                    src="/icon.svg"
                 />
-            ))}
-            </div>
 
-            {/* Sound toggle */}
-            <div className="fixed w-[85px] h-[19px] top-[754px] right-[21px] -rotate-90">
-            <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
-                SOUND
-            </div>
-            <div className="flex absolute top-px left-[59px]">
-                <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap">
-                ON
+                {/* Navigation */}
+                <nav className="fixed top-[59px] right-[59px]">
+                    <ul className="flex flex-col gap-2.5">
+                        {navLinks.map((link) => (
+                            <li key={link.id} className="relative">
+                                <div className="[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98]">
+                                    {link.label}
+                                </div>
+                                <div className="absolute top-0 left-0 [font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b8ac9980]">
+                                    {link.label}
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+
+                {/* Social media links */}
+                <div className="fixed top-[622px] left-12 flex flex-col gap-[30px] p-2">
+                    {socialIcons.map((icon) => (
+                        <img
+                        key={icon.id}
+                        className="w-5 h-5"
+                        alt={icon.alt}
+                        src={icon.src}
+                        />
+                    ))}
                 </div>
-                <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2">
-                OFF
+
+                {/* Sound toggle */}
+                <div className="fixed w-[85px] h-[19px] top-[754px] right-[21px] -rotate-90">
+                    <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
+                        SOUND
+                    </div>
+                    <div className="flex absolute top-px left-[59px]">
+                        <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap">
+                        ON
+                        </div>
+                        <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2">
+                        OFF
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div>
-        </div>
         </div>
 
         
-        <div className="mask absolute h-screen w-full">
-        <div>
-            <MaskMgss />
-        </div>
-        <div className="fixed">
-            {/* Logo */}
-            <img
-            className="fixed w-10 h-10 top-[63px] left-[58px]"
-            alt="Icon"
-            src="/icon.svg"
-            />
-
-            {/* Navigation */}
-            <nav className="fixed top-[59px] right-[59px]">
-            <ul className="flex flex-col gap-2.5">
-                {navLinks.map((link) => (
-                <li key={link.id} className="relative">
-                    <div className="[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98]">
-                    {link.label}
-                    </div>
-                    <div className="absolute top-0 left-0 [font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b8ac9980]">
-                    {link.label}
-                    </div>
-                </li>
-                ))}
-            </ul>
-            </nav>
-
-            {/* Social media links */}
-            <div className="fixed top-[622px] left-12 flex flex-col gap-[30px] p-2">
-            {socialIcons.map((icon) => (
+        <div className="mask absolute w-full">
+            <div>
+                <MaskMgss />
+                <MaskAbout />
+                <div className="h-screen"/>
+            </div>
+            <div className="fixed">
+                {/* Logo */}
                 <img
-                key={icon.id}
-                className="w-5 h-5"
-                alt={icon.alt}
-                src={icon.src}
+                    className="fixed w-10 h-10 top-[63px] left-[58px]"
+                    alt="Icon"
+                    src="/icon.svg"
                 />
-            ))}
-            </div>
 
-            {/* Sound toggle */}
-            <div className="fixed w-[85px] h-[19px] top-[754px] right-[21px] -rotate-90">
-            <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
-                SOUND
-            </div>
-            <div className="flex absolute top-px left-[59px]">
-                <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap">
-                ON
+                {/* Navigation */}
+                <nav className="fixed top-[59px] right-[59px]">
+                    <ul className="flex flex-col gap-2.5">
+                        {navLinks.map((link) => (
+                        <li key={link.id} className="relative">
+                            <div className="[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98]">
+                                {link.label}
+                            </div>
+                            <div className="absolute top-0 left-0 [font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b8ac9980]">
+                                {link.label}
+                            </div>
+                        </li>
+                        ))}
+                    </ul>
+                </nav>
+
+                {/* Social media links */}
+                <div className="fixed top-[622px] left-12 flex flex-col gap-[30px] p-2">
+                    {socialIcons.map((icon) => (
+                        <img
+                        key={icon.id}
+                        className="w-5 h-5"
+                        alt={icon.alt}
+                        src={icon.src}
+                        />
+                    ))}
                 </div>
-                <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2">
-                OFF
+
+                {/* Sound toggle */}
+                <div className="fixed w-[85px] h-[19px] top-[754px] right-[21px] -rotate-90">
+                    <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
+                        SOUND
+                    </div>
+                    <div className="flex absolute top-px left-[59px]">
+                        <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap">
+                        ON
+                        </div>
+                        <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2">
+                        OFF
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div>
-        </div>
         </div>
     </div>
   )

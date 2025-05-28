@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:700,400|Nunito+Sans:700");
 @import "tailwindcss";
 @tailwind utilities;
 
@@ -6,10 +7,13 @@
     all: unset;
   }
 }
+:root{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  overflow: hidden;
+}
 .mask{
   mask-image: url(/public/mask.svg);
   background-color: #eb5939;
   mask-repeat: no-repeat;
   color: black;
-  z-index: 100;
 }
