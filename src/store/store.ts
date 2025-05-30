@@ -1,12 +1,14 @@
 import { create } from "zustand";
 
 interface globalState {
-    isHoverT1: boolean;
-    setIsHoverT1: (value: boolean) => void;
-    isHoverT2: boolean;
-    setIsHoverT2: (value: boolean) => void;
-    maskSize: number
-    setMaskSize: (value: number) => void;
+    isHoverT1: boolean,
+    setIsHoverT1: (value: boolean) => void,
+    isHoverT2: boolean,
+    setIsHoverT2: (value: boolean) => void,
+    maskSize: number,
+    setMaskSize: (value: number) => void,
+    isMaskActive: boolean,
+    setIsMaskActive: (value: boolean)=> void,
 }
 
 const useStore=create<globalState>()((set)=>({
@@ -15,7 +17,9 @@ const useStore=create<globalState>()((set)=>({
     isHoverT2: false,
     setIsHoverT2: (value: boolean) => set({ isHoverT2: value }),
     maskSize: 40,
-    setMaskSize: (value: number) => set({ maskSize: value})
+    setMaskSize: (value: number) => set({ maskSize: value}),
+    isMaskActive: true,
+    setIsMaskActive: (value: boolean) => set({ isMaskActive: value }),
 }))
 
 export default useStore;

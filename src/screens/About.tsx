@@ -14,7 +14,6 @@ function About() {
                 trigger: container.current,
                 start: "top 90%",
                 end: "top 50%",
-                toggleActions: "play none none reverse",
                 scrub:true
             },
             opacity: 0.05,

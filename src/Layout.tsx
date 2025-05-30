@@ -8,25 +8,27 @@ import Mgss from "./screens/Mgss"
 import MaskMgss from "./screens/masks/MaskMgss"
 import About from "./screens/About"
 import MaskAbout from "./screens/masks/MaskAbout"
+import Wid from "./screens/Wid"
+import MaskWid from "./screens/masks/MaskWid"
 import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
 
 
 function Layout() {
+    const isMaskActive=useStore().isMaskActive
     const maskSize = useStore().maskSize;
     const {x, y}=useMousePosition()
 
     useGSAP(()=>{ 
         gsap.registerPlugin(ScrollTrigger, ScrollSmoother)  
-        const lenis=new Lenis({
-            smoothWheel:true,
-            duration:2
-        })   
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-        gsap.ticker.lagSmoothing(0);
+        // const lenis=new Lenis({
+        //     smoothWheel:true
+        // })   
+        // lenis.on('scroll', ScrollTrigger.update);
+        // gsap.ticker.add((time) => {
+        //     lenis.raf(time * 1000);
+        // });
+        // gsap.ticker.lagSmoothing(0);
         gsap.to('.mask',{
             maskPosition: `${x-maskSize/2}px ${y-maskSize/2}px`,
             maskSize: `${maskSize}px`,
@@ -50,11 +52,12 @@ function Layout() {
 
 
   return (
-    <div className="relative w-full scroll-smooth">
+    <div className="relative w-full">
         <div className="absolute w-full">
             <div>
                 <Mgss />
                 <About />
+                <Wid />
                 <div className="h-screen"/>
             </div>
             <div className="fixed">
@@ -111,11 +114,12 @@ function Layout() {
         </div>
 
         
-        <div className="mask absolute w-full">
+        <div className={`${isMaskActive?'mask':'transition-normal'} absolute w-full`}>
             <div>
                 <MaskMgss />
                 <MaskAbout />
-                <div className="h-screen"/>
+                <MaskWid />
+                <div className="h-screen">hello</div>
             </div>
             <div className="fixed">
                 {/* Logo */}

@@ -1,10 +1,10 @@
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import SplitText from "gsap/SplitText";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { Separator } from "../components/separator";
-import useStore from "../store/store";
-import { useState, useRef } from "react";
+import { Separator } from "../../components/separator";
+import useStore from "../../store/store";
+import { useRef, useState } from "react";
 
 const skillsData = [
   {
@@ -43,6 +43,7 @@ const skillsData = [
 
 function Wid() {
 
+    const setIsMaskActive=useStore().setIsMaskActive
     const [selectedProjectIndex, setSelectedProjectIndex] = useState(-1)
     const container=useRef(null)
 
@@ -52,11 +53,11 @@ function Wid() {
         gsap.from(text.chars, {
             scrollTrigger: {
                 trigger: '.scrollText',
-                start: "top 70%",
-                end: "top 10%",
-                scrub:true,
+                start: "top 90%",
+                end: "top 50%",
+                scrub:true
             },
-            opacity: 0.1,
+            opacity: 0.05,
             stagger: 0.2,
             ease: "none"
         });
@@ -64,37 +65,37 @@ function Wid() {
     }, [])
 
   return (
-    <div className="relative w-full h-screen flex flex-col justify-center bg-[#0d0d0d]">
+    <div className="relative w-full h-screen flex flex-col justify-center">
       <div className="font-bold text-[#b7ab98] text-[11.1px] tracking-[5.83px] leading-[21px] mb-6 px-50">
         WHAT I DO
       </div>
 
       {skillsData.map((skill, index) => (
         <div 
-          key={`skill-${index}`}
+          key={`skill-${index}`} 
           onMouseEnter={() => {
             setSelectedProjectIndex(index)
+            setIsMaskActive(false)
           }}
           onMouseLeave={()=>{
               setSelectedProjectIndex(-1)
+              setIsMaskActive(true)
           }} 
           className="relative text-wrapper"
         >
             <div className="relative top-0" >
-              <Separator className="border-[#b8ac9926] border-[0.05rem]" />
+              <Separator className="border-transparent border-[0.05rem]" />
               <div className="relative h-[7em] flex items-center px-50">
-                <div ref={container}
+                <div 
                   className="font-semibold text-[9em] tracking-[-5.83px] leading-[98px] text-[#b7ab98] scrollText">
                     {skill.title}
                 </div>
               </div>
             </div>
 
-            <div
-              key={`skill-${index}-2`} 
+            <div 
               className="absolute top-0 w-full clip"
               style={{clipPath: selectedProjectIndex == index ? "inset(0 0 0)" : "inset(50% 0 50%"}}>
-                <Separator className="border-[#b8ac9926]" />
                 <div className="relative h-[7em]  bg-[#eb5939]">
                     <div className="flex justify-between items-center h-full px-50">
                         <div className="font-semibold text-[9em] tracking-[-5.83px] leading-[98px] text-[#0d0d0d] mr-20">
@@ -108,7 +109,7 @@ function Wid() {
             </div>
         </div>
       ))}
-      <Separator className="border-[#b8ac9926] border-1" />
+      <Separator className="border-transparent border-1" />
     </div>
   )
 }
