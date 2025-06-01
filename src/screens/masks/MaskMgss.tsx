@@ -19,7 +19,7 @@ function MaskMgss() {
         <div className="relative w-full h-screen">
             <div className="flex flex-col gap-3 mx-auto py-16 items-center justify-center min-h-screen">
                 <div className="text-center">
-                    <div className="font-bold text-[13.9px] tracking-[6.67px] leading-[17.3px]">
+                    <div className="font-bold text-[13.9px] tracking-[6.67px] leading-[17.3px] text-[#0d0d0d]">
                         PRATYUSH SRIVASTAVA
                     </div>
                 </div>

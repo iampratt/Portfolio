@@ -48,7 +48,7 @@ function Wid() {
 
     useGSAP(()=>{
         gsap.registerPlugin(ScrollTrigger, SplitText);
-        const text = SplitText.create('.scrollText', { type: "chars" });
+        const text = SplitText.create('.scrollText', { type: 'chars' });
         gsap.from(text.chars, {
             scrollTrigger: {
                 trigger: '.scrollText',
@@ -57,14 +57,14 @@ function Wid() {
                 scrub:true,
             },
             opacity: 0.1,
-            stagger: 0.2,
+            stagger: 0.1,
             ease: "none"
         });
         gsap.to('.scrollText', { opacity: 1 });
     }, [])
 
   return (
-    <div className="relative w-full h-screen flex flex-col justify-center bg-[#0d0d0d]">
+    <div className="relative w-full h-screen flex flex-col justify-center bg-[#0d0d0d] ">
       <div className="font-bold text-[#b7ab98] text-[11.1px] tracking-[5.83px] leading-[21px] mb-6 px-50">
         WHAT I DO
       </div>
@@ -100,7 +100,7 @@ function Wid() {
                         <div className="font-semibold text-[9em] tracking-[-5.83px] leading-[98px] text-[#0d0d0d] mr-20">
                             {skill.title}
                         </div>
-                        <div className=" font-semibold text-[1.1em] text-[#0d0d0d] w-[25rem]">
+                        <div className="font-semibold text-[1.1em] text-[#0d0d0d] w-[20rem]">
                             {skill.description}
                         </div>
                     </div>

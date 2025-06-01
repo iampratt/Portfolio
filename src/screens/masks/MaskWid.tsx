@@ -44,8 +44,8 @@ const skillsData = [
 function Wid() {
 
     const setIsMaskActive=useStore().setIsMaskActive
+    const setBlendMode=useStore().setBlendMode
     const [selectedProjectIndex, setSelectedProjectIndex] = useState(-1)
-    const container=useRef(null)
 
     useGSAP(()=>{
         gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -57,8 +57,8 @@ function Wid() {
                 end: "top 50%",
                 scrub:true
             },
-            opacity: 0.05,
-            stagger: 0.2,
+            opacity: 0.1,
+            stagger: 0.1,
             ease: "none"
         });
         gsap.to('.scrollText', { opacity: 1 });
@@ -76,11 +76,13 @@ function Wid() {
           onMouseEnter={() => {
             setSelectedProjectIndex(index)
             setIsMaskActive(false)
+            setBlendMode(false)
           }}
-          onMouseLeave={()=>{
-              setSelectedProjectIndex(-1)
-              setIsMaskActive(true)
-          }} 
+          // onMouseLeave={()=>{
+          //     setSelectedProjectIndex(-1)
+          //     setIsMaskActive(true)
+          //     setBlendMode(false)
+          // }} 
           className="relative text-wrapper"
         >
             <div className="relative top-0" >
@@ -101,7 +103,7 @@ function Wid() {
                         <div className="font-semibold text-[9em] tracking-[-5.83px] leading-[98px] text-[#0d0d0d] mr-20">
                             {skill.title}
                         </div>
-                        <div className=" font-semibold text-[1.1em] text-[#0d0d0d] w-[25rem]">
+                        <div className="font-semibold text-[1.1em] text-[#0d0d0d] w-[20rem]">
                             {skill.description}
                         </div>
                     </div>
