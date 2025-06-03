@@ -7,21 +7,13 @@ function Mgss() {
     useGSAP(()=>{
         gsap.registerPlugin(ScrollTrigger)
         const context = gsap.context( () => {
-
-            const tl = gsap.timeline({
-
+            gsap.timeline({
                 scrollTrigger: {
-
                     trigger: '.btemp',
-
                     start: "top bottom",
-
                     end: "bottom top",
-
                     scrub: true,
-
                 },
-
             })
             .to('.btemp', {y: -500}, 0)
             .to('.btemp2', {y: 100}, 0)
