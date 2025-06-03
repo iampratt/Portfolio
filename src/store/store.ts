@@ -9,8 +9,6 @@ interface globalState {
     setMaskSize: (value: number) => void,
     isMaskActive: boolean,
     setIsMaskActive: (value: boolean)=> void,
-    blendMode: boolean;
-    setBlendMode: (value: boolean)=> void
 }
 
 const useStore=create<globalState>()((set)=>({
@@ -22,8 +20,6 @@ const useStore=create<globalState>()((set)=>({
     setMaskSize: (value: number) => set({ maskSize: value}),
     isMaskActive: true,
     setIsMaskActive: (value: boolean) => set({ isMaskActive: value }),
-    blendMode: true,
-    setBlendMode: (value: boolean) => set({blendMode: value})
 }))
 
 export default useStore;

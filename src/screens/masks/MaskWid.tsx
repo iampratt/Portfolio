@@ -4,7 +4,7 @@ import SplitText from "gsap/SplitText";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Separator } from "../../components/separator";
 import useStore from "../../store/store";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const skillsData = [
   {
@@ -44,7 +44,6 @@ const skillsData = [
 function Wid() {
 
     const setIsMaskActive=useStore().setIsMaskActive
-    const setBlendMode=useStore().setBlendMode
     const [selectedProjectIndex, setSelectedProjectIndex] = useState(-1)
 
     useGSAP(()=>{
