@@ -11,7 +11,7 @@ import MaskAbout from "./screens/masks/MaskAbout"
 import Wid from "./screens/Wid"
 import MaskWid from "./screens/masks/MaskWid"
 import Projects from "./screens/Projects"
-import MaskProjects from "./screens/masks/maskProjects"
+import MaskProjects from "./screens/masks/MaskProjects"
 import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
 
