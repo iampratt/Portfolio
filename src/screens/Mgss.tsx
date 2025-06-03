@@ -24,7 +24,7 @@ function Mgss() {
 
   return (
     <>
-        <div className="smooth-wrapper relative w-full h-screen bg-[#0d0d0d]">
+        <div id="mgss" className="smooth-wrapper relative w-full h-screen bg-[#0d0d0d]">
             <img src="/public/btemp.jpeg" className="smooth-content btemp absolute w-full h-[100vh] top-[500px] object-center" />
             <img src="/public/comp.png" alt="" className="btemp2 h-100 w-100 absolute opacity-50 -rotate-20 -left-50 top-[30%]" />
             <div className="flex flex-col gap-3 mx-auto py-16 items-center justify-center min-h-screen">

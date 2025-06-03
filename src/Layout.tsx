@@ -41,8 +41,8 @@ function Layout() {
 
     const navLinks = [
         { id: "about", label: "ABOUT" },
-        { id: "work", label: "WORK" },
-        { id: "contact", label: "CONTACT" },
+        { id: "projects", label: "PROJECTS" },
+        { id: "wid", label: "WHAT I DO" },
     ];
 
     const socialIcons = [
@@ -76,10 +76,7 @@ function Layout() {
                     <ul className="flex flex-col gap-2.5">
                         {navLinks.map((link) => (
                             <li key={link.id} className="relative">
-                                <div className="[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98]">
-                                    {link.label}
-                                </div>
-                                <div className="absolute top-0 left-0 [font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b8ac9980]">
+                                <div onClick={()=>document.getElementById(link.id)?.scrollIntoView({behavior: 'smooth'})} className="[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98]">
                                     {link.label}
                                 </div>
                             </li>
@@ -138,7 +135,7 @@ function Layout() {
                     <ul className="flex flex-col gap-2.5">
                         {navLinks.map((link) => (
                         <li key={link.id} className="relative">
-                            <div onClick={()=>document.getElementById(link.id)?.scrollIntoView({behavior: 'smooth'})} className={`[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98] hover:text-[#0d0d0d] ${isMaskActive && 'text-[#0d0d0d]'} cursor-pointer`}>
+                            <div onClick={()=>document.getElementById(link.id)?.scrollIntoView({behavior: 'smooth'})} className={`[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#0d0d0d] cursor-pointer`}>
                                 {link.label}
                             </div>
                         </li>

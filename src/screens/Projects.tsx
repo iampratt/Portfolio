@@ -47,13 +47,13 @@ function Projects() {
         trigger: containerRef.current,
         pin: true,
         scrub: 1,
-        end: "+=10000",
+        end: "+=5000",
       }
     });
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full h-screen bg-[#0d0d0d] overflow-hidden">
+    <div id="projects" ref={containerRef} className="relative w-full h-screen bg-[#0d0d0d] overflow-hidden">
       <div className="absolute top-20 left-50">
         <h2 className="font-bold text-[#b7ab98] text-[2em] tracking-[6.67px] leading-[17.3px]">
           SELECTED WORKS
