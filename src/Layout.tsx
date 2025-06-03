@@ -10,6 +10,8 @@ import About from "./screens/About"
 import MaskAbout from "./screens/masks/MaskAbout"
 import Wid from "./screens/Wid"
 import MaskWid from "./screens/masks/MaskWid"
+import Projects from "./screens/Projects"
+import MaskProjects from "./screens/masks/maskProjects"
 import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
 import MagneticMouse from "./components/magneticMouse"
@@ -59,6 +61,7 @@ function Layout() {
                 <Mgss />
                 <About />
                 <Wid />
+                <Projects />
                 <div className="h-screen"/>
             </div>
             <div className="fixed">
@@ -120,6 +123,7 @@ function Layout() {
                 <MaskMgss />
                 <MaskAbout />
                 <MaskWid />
+                <MaskProjects />
                 <div className="h-screen">hello</div>
             </div>
             <div className="fixed">

@@ -6,7 +6,9 @@ function Mgss() {
 
     useGSAP(()=>{
         gsap.registerPlugin(ScrollTrigger)
-        gsap.timeline({
+        const context = gsap.context( () => {
+
+            const tl = gsap.timeline({
 
                 scrollTrigger: {
 
@@ -21,13 +23,18 @@ function Mgss() {
                 },
 
             })
-            .to('.btemp', {y: -50}, 0)
-    })
+            .to('.btemp', {y: -500}, 0)
+            .to('.btemp2', {y: 100}, 0)
+        })
+            
+            return ()=>context.revert()
+        })
 
   return (
     <>
-        <div className="relative w-full h-screen bg-[#0d0d0d]">
-            <div className="btemp absolute w-full h-screen [background:url(..//btemp.jpeg)_50%_50%_/_cover] " />
+        <div className="smooth-wrapper relative w-full h-screen bg-[#0d0d0d]">
+            <img src="/public/btemp.jpeg" className="smooth-content btemp absolute w-full h-[100vh] top-[500px] object-center" />
+            <img src="/public/comp.png" alt="" className="btemp2 h-100 w-100 absolute opacity-50 -rotate-20 -left-50 top-[30%]" />
             <div className="flex flex-col gap-3 mx-auto py-16 items-center justify-center min-h-screen">
                 <div className="text-center z-1">
                     <div className="font-bold text-[#b7ab98] text-[13.9px] tracking-[6.67px] leading-[17.3px]">

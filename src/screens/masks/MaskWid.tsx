@@ -76,7 +76,6 @@ function Wid() {
           onMouseEnter={() => {
             setSelectedProjectIndex(index)
             setIsMaskActive(false)
-            setBlendMode(false)
           }}
           // onMouseLeave={()=>{
           //     setSelectedProjectIndex(-1)

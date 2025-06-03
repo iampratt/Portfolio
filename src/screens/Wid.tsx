@@ -45,6 +45,7 @@ function Wid() {
 
     const [selectedProjectIndex, setSelectedProjectIndex] = useState(-1)
     const container=useRef(null)
+    const setIsMaskActive=useStore().setIsMaskActive
 
     useGSAP(()=>{
         gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -77,6 +78,7 @@ function Wid() {
           }}
           onMouseLeave={()=>{
               setSelectedProjectIndex(-1)
+              setIsMaskActive(true)
           }} 
           className="relative text-wrapper"
         >
