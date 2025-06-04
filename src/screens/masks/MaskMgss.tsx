@@ -16,8 +16,8 @@ function MaskMgss() {
 
   return (
     <>
-        <div className="relative w-full h-screen">
-            <div className="flex flex-col gap-3 mx-auto py-16 items-center justify-center min-h-screen">
+        <div className="relative w-full h-screen overflow-hidden">
+            <div className="flex flex-col lg:gap-3 mx-auto py-16 items-center justify-center min-h-screen">
                 <div className="text-center">
                     <div className="font-bold text-[13.9px] tracking-[6.67px] leading-[17.3px] text-[#0d0d0d]">
                         PRATYUSH SRIVASTAVA
@@ -25,20 +25,20 @@ function MaskMgss() {
                 </div>
                 <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="flex relative items-center justify-center">
                     {/* Hiding bad shit since 0000 */}
-                    <div className="flex flex-col gap-3 justify-center items-center mt-24">
-                        <div className="font-bold text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                    <div className="flex flex-col lg:gap-3 justify-center items-center mt-15 lg:mt-24">
+                        <div className="font-bold text-[5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                             HIDING
                         </div>
-                        <div className="font-bold text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                             BAD
                         </div>
-                        <div className="font-bold text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                             SH*T
                         </div>
-                        <div className="font-bold text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                             SINCE
                         </div>
-                        <div className="font-bold text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                             0000
                         </div>
                     </div>
