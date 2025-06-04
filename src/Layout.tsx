@@ -3,7 +3,7 @@ import gsap from "gsap"
 import ScrollSmoother from "gsap/ScrollSmoother"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
-import Lenis from "lenis"
+// import Lenis from "lenis"
 import Mgss from "./screens/Mgss"
 import MaskMgss from "./screens/masks/MaskMgss"
 import About from "./screens/About"
@@ -54,7 +54,7 @@ function Layout() {
 
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full ">
         <div className={`absolute w-full ${!isMaskActive && 'z-10'}`}>
             <div>
                 <Mgss />
@@ -66,13 +66,13 @@ function Layout() {
             <div className="fixed">
                 {/* Logo */}
                 <img
-                    className="fixed w-10 h-10 top-[63px] left-[58px]"
+                    className="fixed w-10 h-10 top-[1.5%] lg:top-[5%] left-[5%] lg:left-[3%]"
                     alt="Icon"
                     src="/icon.svg"
                 />
 
                 {/* Navigation */}
-                <nav className="fixed top-[59px] right-[59px]">
+                <nav className="fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]">
                     <ul className="flex flex-col gap-2.5">
                         {navLinks.map((link) => (
                             <li key={link.id} className="relative">
@@ -85,7 +85,7 @@ function Layout() {
                 </nav>
 
                 {/* Social media links */}
-                <div className="fixed bottom-[5rem] left-12 flex flex-col gap-[30px] p-2">
+                <div className="fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2">
                     {socialIcons.map((icon) => (
                         <img
                             key={icon.id}
@@ -97,7 +97,7 @@ function Layout() {
                 </div>
 
                 {/* Sound toggle */}
-                <div className="fixed w-[85px] h-[19px] top-[754px] right-[21px] -rotate-90">
+                <div className="fixed w-[85px] h-[19px] bottom-[1.5%] lg:bottom-[5%] right-[5%] lg:right-[3%] -rotate-90">
                     <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
                         SOUND
                     </div>
@@ -125,13 +125,13 @@ function Layout() {
             <div className="fixed">
                 {/* Logo */}
                 <img
-                    className={`fixed w-10 h-10 top-[63px] left-[58px] ${isMaskActive && 'contrast-200 invert grayscale'}`}
+                    className={`fixed w-10 h-10 top-[1.5%] lg:top-[5%] left-[5%] lg:left-[3%] ${isMaskActive && 'contrast-200 invert grayscale'}`}
                     alt="Icon"
                     src="/icon.svg"
                 />
 
                 {/* Navigation */}
-                <nav className="fixed top-[59px] right-[59px]">
+                <nav className="fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]">
                     <ul className="flex flex-col gap-2.5">
                         {navLinks.map((link) => (
                         <li key={link.id} className="relative">
@@ -144,7 +144,7 @@ function Layout() {
                 </nav>
 
                 {/* Social media links */}
-                <div className="fixed bottom-[5rem] left-12 flex flex-col gap-[30px] p-2">
+                <div className="fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2">
                     {socialIcons.map((icon) => (
                         <img
                             key={icon.id}
@@ -156,7 +156,7 @@ function Layout() {
                 </div>
 
                 {/* Sound toggle */}
-                <div className="fixed w-[85px] h-[19px] top-[754px] right-[21px] -rotate-90">
+                <div className="fixed w-[85px] h-[19px] bottom-[1.5%] lg:bottom-[5%] right-[5%] lg:right-[3%] -rotate-90">
                     <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
                         SOUND
                     </div>
