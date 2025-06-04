@@ -6,7 +6,7 @@ type props = {
 
 function Intro({setIsLoading}: props) {
   return (
-    <div className="absolute w-full h-screen top-0 left-0 bg-[#0d0d0d] flex items-center justify-center">
+    <div className="absolute w-full h-[100dvh] top-0 left-0 bg-[#0d0d0d] flex items-center justify-center">
       <div className="relative w-[225px] h-[225px] flex flex-col items-center justify-center">
         <div className="w-[53px] h-[53px] mb-12 [background:url(..//image--page-loading-logo-.png)_50%_50%_/_cover]" />
         <Button

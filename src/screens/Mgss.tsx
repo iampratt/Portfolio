@@ -24,7 +24,7 @@ function Mgss() {
 
   return (
     <>
-        <div id="mgss" className="smooth-wrapper relative w-full h-screen bg-[#0d0d0d] overflow-hidden">
+        <div id="mgss" className="smooth-wrapper relative w-full h-[100dvh] bg-[#0d0d0d] overflow-hidden">
             {/* <Coffee /> */}
             {/* <img src="/public/btemp.jpeg" className="smooth-content btemp absolute w-full h-[100vh] top-[500px] object-center" />
             <img src="/public/comp.png" alt="" className="btemp2 h-100 w-100 absolute opacity-50 -rotate-20 -left-50 top-[30%]" /> */}

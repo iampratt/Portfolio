@@ -53,7 +53,7 @@ function MaskProjects() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full h-screen overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-[100dvh] overflow-hidden">
       <div className="absolute top-12 left-12">
         <h2 className="font-bold text-[#b7ab98] text-[13.9px] tracking-[6.67px] leading-[17.3px]">
           SELECTED WORKS

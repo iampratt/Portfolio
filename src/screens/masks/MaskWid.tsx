@@ -64,7 +64,7 @@ function Wid() {
     }, [])
 
   return (
-    <div className="relative w-full h-screen flex flex-col justify-center">
+    <div className="relative w-full h-[100dvh] flex flex-col justify-center">
       <div className="font-bold text-[#b7ab98] text-[11.1px] tracking-[5.83px] leading-[21px] mb-3 lg:mb-6 px-5 lg:px-50">
         WHAT I DO
       </div>
