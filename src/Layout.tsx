@@ -23,14 +23,14 @@ function Layout() {
 
     useGSAP(()=>{ 
         gsap.registerPlugin(ScrollTrigger, ScrollSmoother)  
-        const lenis=new Lenis({
-            smoothWheel:true
-        })   
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-        gsap.ticker.lagSmoothing(0);
+        // const lenis=new Lenis({
+        //     smoothWheel:true
+        // })   
+        // lenis.on('scroll', ScrollTrigger.update);
+        // gsap.ticker.add((time) => {
+        //     lenis.raf(time * 1000);
+        // });
+        // gsap.ticker.lagSmoothing(0);
         gsap.to('.mask',{
             maskPosition: `${x-maskSize/2}px ${y-maskSize/2}px`,
             maskSize: isMaskActive?`${maskSize}px`:'0px',

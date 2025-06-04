@@ -3,6 +3,7 @@ import SplitText from "gsap/SplitText";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import Face from "../components/3d/face";
 
 function About() {
     const container=useRef(null)
@@ -25,6 +26,9 @@ function About() {
 
   return (
     <div id='about' className='relative w-full h-screen bg-[#0d0d0d] flex justify-center items-center'>
+        <div className="absolute h-screen w-full opacity-20">
+            <Face />
+        </div>
         <div className='flex flex-col gap-10 justify-center items-start px-50 text-[#b7ab98]'>
             <div className='font-bold text-[13.9px] tracking-[6.67px] leading-[17.3px]'>ABOUT ME</div>
             <div ref={container} className='text-[65px] tracking-[-2.67px] leading-[54.7px] font-bold'>
