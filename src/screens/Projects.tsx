@@ -36,6 +36,7 @@ function Projects() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const setIsMaskActive=useStore().setIsMaskActive
+  const setIsProjectSCroll=useStore().setIsProjectSCroll
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -53,23 +54,26 @@ function Projects() {
   }, []);
 
   return (
-    <div id="projects" ref={containerRef} className="relative w-full h-screen bg-[#0d0d0d] overflow-hidden">
-      <div className="absolute top-20 left-50">
-        <h2 className="font-bold text-[#b7ab98] text-[2em] tracking-[6.67px] leading-[17.3px]">
+    <div 
+      id="projects"
+      onMouseLeave={()=>{
+        setIsMaskActive(true)
+        setIsProjectSCroll(false)
+      }}
+      ref={containerRef}
+      className="relative w-full h-screen bg-[#0d0d0d]">
+      <div className="absolute top-20 px-10 lg:px-50">
+        <h2 className="font-bold text-[#b7ab98] text-[2em] tracking-[6.67px] leading-[1em] lg:leading-[17.3px]">
           SELECTED WORKS
         </h2>
       </div>
 
-      <div 
-        onMouseLeave={()=>{
-            setIsMaskActive(true)
-        }}
-        className="absolute top-1/2 left-1/2 -translate-y-1/2">
-        <div ref={scrollRef} className="flex gap-8 pointer-events-none">
+      <div className="absolute top-1/2 left-1/8 lg:left-1/2 -translate-y-1/2 pt-20 lg:pt-0">
+        <div ref={scrollRef} className="flex gap-8 ">
           {[...projects].map((project, index) => (
             <div
               key={`${project.title}-${index}`}
-              className="w-[600px] h-[600px] relative "
+              className="w-[18em] h-[35em] lg:w-[600px] lg:h-[600px] relative "
             >
               <div className="absolute inset-0 bg-[#1a1a1a] rounded-lg transform transition-transform group-hover:scale-[0.98]">
                 <img
@@ -92,7 +96,7 @@ function Projects() {
                   </div>
                   <Button
                     variant="ghost"
-                    className="text-[#eb5939] hover:text-[#b7ab98] transition-colors "
+                    className="text-[#eb5939] hover:text-[#b7ab98] transition-colors cursor-pointer"
                   >
                     View Project →
                   </Button>

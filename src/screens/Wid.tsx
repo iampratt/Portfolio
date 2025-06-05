@@ -84,9 +84,9 @@ function Wid() {
         >
             <div className="relative top-0" >
               <Separator className="border-[#b8ac9926] border-[0.05rem]" />
-              <div className="relative h-[4.1em] lg:h-[7em] flex items-center px-5 lg:px-50">
+              <div className="relative h-[3.2em] md:h-[4.1em] lg:h-[7em] flex items-center px-5 lg:px-50">
                 <div ref={container}
-                  className="font-semibold text-[4.7em] lg:text-[9em] tracking-[-5.83px] leading-[98px] text-[#b7ab98] scrollText">
+                  className="font-semibold text-[3.9em] md:text-[4.7em] lg:text-[9em] tracking-[-5.83px] leading-[98px] text-[#b7ab98] scrollText">
                     {skill.title}
                 </div>
               </div>
@@ -97,9 +97,9 @@ function Wid() {
               className="absolute top-0 w-full clip"
               style={{clipPath: selectedProjectIndex == index ? "inset(0 0 0)" : "inset(50% 0 50%"}}>
                 <Separator className="border-[#b8ac9926]" />
-                <div className="relative h-[4.1em] lg:h-[7em]  bg-[#eb5939]">
+                <div className="relative h-[3.2em] md:h-[4.1em] lg:h-[7em]  bg-[#eb5939]">
                     <div className="flex justify-between items-center h-full px-5 lg:px-50">
-                        <div className="font-semibold text-[4.7em] lg:text-[9em] tracking-[-5.83px] leading-[98px] text-[#0d0d0d] mr-20">
+                        <div className="font-semibold text-[3.9em] md:text-[4.7em] lg:text-[9em] tracking-[-5.83px] leading-[98px] text-[#0d0d0d] mr-20">
                             {skill.title}
                         </div>
                         <div className={`${(window.innerWidth<1024) && 'hidden'} font-semibold text-[1.1em] text-[#0d0d0d] w-[20rem]`}>

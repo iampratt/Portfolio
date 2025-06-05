@@ -37,19 +37,19 @@ function Mgss() {
                 <div  className="flex relative items-center justify-center">
                     {/* Making good shit since 0000 */}
                     <div className="flex flex-col lg:gap-3 justify-center items-center mt-15 lg:mt-24">
-                        <div className="font-bold text-[#b7ab98] text-[5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[#b7ab98] text-[4.5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                             MAKING
                         </div>
-                        <div className="font-bold text-[#eb5939] text-[5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[#eb5939] text-[4.5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                             GOOD
                         </div>
-                        <div className="font-bold text-[#eb5939] text-[5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[#eb5939] text-[4.5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                             SH*T
                         </div>
-                        <div className="font-bold text-[#b7ab98] text-[5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[#b7ab98] text-[4.5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                             SINCE
                         </div>
-                        <div className="font-bold text-[#b7ab98] text-[5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[#b7ab98] text-[4.5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                             0000
                         </div>
                     </div>

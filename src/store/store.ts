@@ -8,7 +8,9 @@ interface globalState {
     maskSize: number,
     setMaskSize: (value: number) => void,
     isMaskActive: boolean,
-    setIsMaskActive: (value: boolean)=> void,
+    setIsMaskActive: (value: boolean) => void,
+    isProjectScroll: boolean;
+    setIsProjectSCroll: (value: boolean) => void
 }
 
 const useStore=create<globalState>()((set)=>({
@@ -20,6 +22,8 @@ const useStore=create<globalState>()((set)=>({
     setMaskSize: (value: number) => set({ maskSize: value}),
     isMaskActive: true,
     setIsMaskActive: (value: boolean) => set({ isMaskActive: value }),
+    isProjectScroll: false,
+    setIsProjectSCroll: (value: boolean) => set({ isProjectScroll: value})
 }))
 
 export default useStore;
