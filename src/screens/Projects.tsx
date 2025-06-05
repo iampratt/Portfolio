@@ -36,7 +36,6 @@ function Projects() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const setIsMaskActive=useStore().setIsMaskActive
-  const setIsProjectSCroll=useStore().setIsProjectSCroll
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -58,7 +57,6 @@ function Projects() {
       id="projects"
       onMouseLeave={()=>{
         setIsMaskActive(true)
-        setIsProjectSCroll(false)
       }}
       ref={containerRef}
       className="relative w-full h-screen bg-[#0d0d0d]">
