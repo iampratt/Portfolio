@@ -15,16 +15,20 @@ import MaskProjects from "./screens/masks/MaskProjects"
 import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
 
-
 function Layout() {
     const isMaskActive=useStore().isMaskActive
-    const maskSize = useStore().maskSize;
+    const maskSize=useStore().maskSize;
+    const isMobile=useStore().isMobile
+    const setIsMobile=useStore().setIsMobile
     const {x, y}=useMousePosition()
 
     useGSAP(()=>{ 
         gsap.registerPlugin(ScrollTrigger, ScrollSmoother)  
         const lenis=new Lenis({
             smoothWheel:true,
+            lerp: 1,
+            syncTouch: true,
+            syncTouchLerp: 1,
             easing: (x)=>1 - (1 - x) * (1 - x)
         })   
         lenis.on('scroll', ScrollTrigger.update);
