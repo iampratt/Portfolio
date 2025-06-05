@@ -24,7 +24,8 @@ function Layout() {
     useGSAP(()=>{ 
         gsap.registerPlugin(ScrollTrigger, ScrollSmoother)  
         const lenis=new Lenis({
-            smoothWheel:true
+            smoothWheel:true,
+            easing: (x)=>1 - (1 - x) * (1 - x)
         })   
         lenis.on('scroll', ScrollTrigger.update);
         gsap.ticker.add((time) => {
@@ -72,7 +73,7 @@ function Layout() {
                 />
 
                 {/* Navigation */}
-                <nav className="fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]">
+                <nav className={`${window.innerWidth<768 && 'hidden'} fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]`}>
                     <ul className="flex flex-col gap-2.5">
                         {navLinks.map((link) => (
                             <li key={link.id} className="relative">
@@ -85,7 +86,7 @@ function Layout() {
                 </nav>
 
                 {/* Social media links */}
-                <div className="fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2">
+                <div className={`${window.innerWidth<768 && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2`}>
                     {socialIcons.map((icon) => (
                         <img
                             key={icon.id}
@@ -97,7 +98,7 @@ function Layout() {
                 </div>
 
                 {/* Sound toggle */}
-                <div className="fixed w-[85px] h-[19px] bottom-[1.5%] lg:bottom-[5%] right-[5%] lg:right-[3%] -rotate-90">
+                <div className={`${window.innerWidth<768 && 'hidden'} fixed w-[85px] h-[19px] bottom-[1.5%] lg:bottom-[5%] right-[5%] lg:right-[3%] -rotate-90`}>
                     <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
                         SOUND
                     </div>
@@ -131,7 +132,7 @@ function Layout() {
                 />
 
                 {/* Navigation */}
-                <nav className="fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]">
+                <nav className={`${window.innerWidth<768 && 'hidden'} fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]`}>
                     <ul className="flex flex-col gap-2.5">
                         {navLinks.map((link) => (
                         <li key={link.id} className="relative">
@@ -144,7 +145,7 @@ function Layout() {
                 </nav>
 
                 {/* Social media links */}
-                <div className="fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2">
+                <div className={`${window.innerWidth<768 && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2`}>
                     {socialIcons.map((icon) => (
                         <img
                             key={icon.id}
@@ -156,7 +157,7 @@ function Layout() {
                 </div>
 
                 {/* Sound toggle */}
-                <div className="fixed w-[85px] h-[19px] bottom-[1.5%] lg:bottom-[5%] right-[5%] lg:right-[3%] -rotate-90">
+                <div className={`${window.innerWidth<768 && 'hidden'} fixed w-[85px] h-[19px] bottom-[1.5%] lg:bottom-[5%] right-[5%] lg:right-[3%] -rotate-90`}>
                     <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
                         SOUND
                     </div>
