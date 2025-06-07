@@ -33,8 +33,7 @@ function Mgss() {
             <div className="absolute -right-[10em] lg:-right-[30em] -top-50 lg:-top-[17em] h-screen w-[170vw] lg:w-screen opacity-20">
                 <Computer />
             </div>
-            {/* <img src="/public/btemp.jpeg" className="smooth-content btemp absolute w-full h-[100vh] top-[500px] object-center" />
-            <img src="/public/comp.png" alt="" className="btemp2 h-100 w-100 absolute opacity-50 -rotate-20 -left-50 top-[30%]" /> */}
+            
             <div className="flex flex-col lg:gap-3 mx-auto py-16 items-center justify-center min-h-screen">
                 <div className="text-center">
                     <div className="font-bold text-[#b7ab98] text-[13.9px] tracking-[6.67px] leading-[17.3px]">
