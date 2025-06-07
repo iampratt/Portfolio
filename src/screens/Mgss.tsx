@@ -1,6 +1,8 @@
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Coffee from "../components/3d/coffee"
+import Computer from "../components/3d/computer"
 
 function Mgss() {
 
@@ -24,8 +26,13 @@ function Mgss() {
 
   return (
     <>
-        <div id="mgss" className="smooth-wrapper relative w-full h-[100dvh] bg-[#0d0d0d] overflow-hidden">
-            {/* <Coffee /> */}
+        <div id="mgss" className="smooth-wrapper relative w-full h-[100dvh] bg-[#0d0d0d]">
+            <div className="absolute -left-[330px] lg:-left-[45.2em] top-50 lg:top-[200px] h-screen w-[170vw] lg:w-screen opacity-20">
+                <Coffee />
+            </div>
+            <div className="absolute -right-[10em] lg:-right-[30em] -top-50 lg:-top-[17em] h-screen w-[170vw] lg:w-screen opacity-20">
+                <Computer />
+            </div>
             {/* <img src="/public/btemp.jpeg" className="smooth-content btemp absolute w-full h-[100vh] top-[500px] object-center" />
             <img src="/public/comp.png" alt="" className="btemp2 h-100 w-100 absolute opacity-50 -rotate-20 -left-50 top-[30%]" /> */}
             <div className="flex flex-col lg:gap-3 mx-auto py-16 items-center justify-center min-h-screen">
