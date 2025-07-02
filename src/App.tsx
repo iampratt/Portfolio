@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       {isLoading ? <Intro setIsLoading={setIsLoading} /> : 
-        <Intro setIsLoading={setIsLoading}}
+        <Intro setIsLoading={setIsLoading} /> }
     </>
   )
 }
