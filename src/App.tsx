@@ -10,9 +10,8 @@ function App() {
 
   return (
     <>
-{/*       {isLoading ? <Intro setIsLoading={setIsLoading} /> : 
-        <Layout/>} */}
-     <Intro setIsLoading={setIsLoading} />
+      {isLoading ? <Intro setIsLoading={setIsLoading} /> : 
+        <Intro setIsLoading={setIsLoading}}
     </>
   )
 }
