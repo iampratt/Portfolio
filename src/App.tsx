@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Intro from "./screens/Intro"
-// import Layout from "./Layout"
+import Layout from "./Layout"
 
 function App() {
   
@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       {isLoading ? <Intro setIsLoading={setIsLoading} /> : 
-        <Intro setIsLoading={setIsLoading} /> }
+        <Layout /> }
     </>
   )
 }

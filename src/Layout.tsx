@@ -12,6 +12,7 @@ import Wid from "./screens/Wid"
 import MaskWid from "./screens/masks/MaskWid"
 import Projects from "./screens/Projects"
 import MaskProjects from "./screens/masks/MaskProjects"
+import Hamburger from "./components/hamburger"
 import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
 import { useEffect, useState } from "react"
@@ -42,7 +43,7 @@ function Layout() {
             smoothWheel:true,
             lerp: 1,
             syncTouch: true,
-            syncTouchLerp: 1,
+            syncTouchLerp: 0.1,
             easing: (x)=>1 - (1 - x) * (1 - x)
         })   
         lenis.on('scroll', ScrollTrigger.update);
@@ -59,9 +60,10 @@ function Layout() {
     }, [x, y]);
 
     const navLinks = [
+        { id: "mgss", label: "HOME"},
         { id: "about", label: "ABOUT" },
-        { id: "projects", label: "PROJECTS" },
         { id: "wid", label: "WHAT I DO" },
+        { id: "projects", label: "PROJECTS" }
     ];
 
     const socialIcons = [
@@ -73,7 +75,7 @@ function Layout() {
 
 
   return (
-    <div className="relative w-full ">
+    <div className="relative w-[100dvw] ">
         <div className={`absolute w-full ${!isMaskActive && 'z-10'}`}>
             <div>
                 <Mgss />
@@ -134,52 +136,12 @@ function Layout() {
                 {isMobile && 
                     <div>
                         {/* Hamburger Icon */}
-                        <button
+                        {/* <button
                             className="z-50 fixed top-5 right-5 w-10 h-10 flex items-center justify-center"
                             onClick={() => setOpen((v) => !v)}
                             aria-label="Toggle menu"
-                        >
-                            <svg width="32" height="32" viewBox="0 0 32 32">
-                                <g>
-                                    <rect
-                                        x="6"
-                                        y="9"
-                                        width="20"
-                                        height="2"
-                                        rx="1"
-                                        fill="#b7ab98"
-                                        style={{
-                                            transition: "all 0.3s cubic-bezier(.4,2,.6,1)",
-                                            transform: open ? "translateY(7px) rotate(45deg)" : "none"
-                                        }}
-                                    />
-                                    <rect
-                                        x="6"
-                                        y="15"
-                                        width="20"
-                                        height="2"
-                                        rx="1"
-                                        fill="#b7ab98"
-                                        style={{
-                                            transition: "all 0.3s cubic-bezier(.4,2,.6,1)",
-                                            opacity: open ? 0 : 1
-                                        }}
-                                    />
-                                    <rect
-                                        x="6"
-                                        y="21"
-                                        width="20"
-                                        height="2"
-                                        rx="1"
-                                        fill="#b7ab98"
-                                        style={{
-                                            transition: "all 0.3s cubic-bezier(.4,2,.6,1)",
-                                            transform: open ? "translateY(-7px) rotate(-45deg)" : "none"
-                                        }}
-                                    />
-                                </g>
-                            </svg>
-                        </button>
+                        > */}
+                            <Hamburger />
                         {/* Overlay Menu */}
                         {open && (
                             <div className="fixed inset-0 z-40 bg-[#0d0d0d]/90 flex flex-col items-center justify-center transition-all">
@@ -282,46 +244,7 @@ function Layout() {
                             onClick={() => setOpen((v) => !v)}
                             aria-label="Toggle menu"
                         >
-                            <svg width="32" height="32" viewBox="0 0 32 32">
-                                <g>
-                                    <rect
-                                        x="6"
-                                        y="9"
-                                        width="20"
-                                        height="2"
-                                        rx="1"
-                                        fill="#b7ab98"
-                                        style={{
-                                            transition: "all 0.3s cubic-bezier(.4,2,.6,1)",
-                                            transform: open ? "translateY(7px) rotate(45deg)" : "none"
-                                        }}
-                                    />
-                                    <rect
-                                        x="6"
-                                        y="15"
-                                        width="20"
-                                        height="2"
-                                        rx="1"
-                                        fill="#b7ab98"
-                                        style={{
-                                            transition: "all 0.3s cubic-bezier(.4,2,.6,1)",
-                                            opacity: open ? 0 : 1
-                                        }}
-                                    />
-                                    <rect
-                                        x="6"
-                                        y="21"
-                                        width="20"
-                                        height="2"
-                                        rx="1"
-                                        fill="#b7ab98"
-                                        style={{
-                                            transition: "all 0.3s cubic-bezier(.4,2,.6,1)",
-                                            transform: open ? "translateY(-7px) rotate(-45deg)" : "none"
-                                        }}
-                                    />
-                                </g>
-                            </svg>
+                            <Hamburger />
                         </button>
                         {/* Overlay Menu */}
                         {open && (

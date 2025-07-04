@@ -50,13 +50,13 @@ function Mgss() {
                             GOOD
                         </div>
                         <div className="font-bold text-[#eb5939] text-[4.5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
-                            SH*T
+                            THINGS
                         </div>
                         <div className="font-bold text-[#b7ab98] text-[4.5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                             SINCE
                         </div>
                         <div className="font-bold text-[#b7ab98] text-[4.5em] lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
-                            0000
+                            2023
                         </div>
                     </div>
                 </div>

@@ -7,38 +7,28 @@ import useStore from "../../store/store";
 import { useState } from "react";
 
 const skillsData = [
-  {
-    title: "3D",
-    description: 'I can produce anything that my 16" laptop can render',
-  },
-  {
-    title: "VISUAL",
-    description: [
-      "I search the internet for visual references and then",
-      "combine them to create my own work.",
-    ],
-  },
-  {
-    title: "MOTION",
-    description: [
-      "I use fancy motion that makes my design more",
-      "interesting that it actually is",
-    ],
-  },
-  {
-    title: "PRODUCT",
-    description: [
-      "I utilize common design best practices, test, and re-",
-      "iterate until it works (hopefully).",
-    ],
-  },
-  {
-    title: "TUTORIAL",
-    description: [
-      "I thought I'd make millions of $ from Youtube but I",
-      "didn't",
-    ],
-  },
+  [
+    {
+      title: "FULL-STACK",
+      description: "I break and fix things across the stack — sometimes on the same day."
+    },
+    {
+      title: "GEN AI",
+      description: "Still waiting for an LLM to replace my 1000-line prompts."
+    },
+    {
+      title: "DEVOPS",
+      description: "99% YAML, 1% hope that the build passes on the first try."
+    },
+    {
+      title: "OPEN SOURCE",
+      description: "PRs at 2 AM, merge conflicts at 9 — the circle of life."
+    },
+    {
+      title: "CLOUD",
+      description: "Yes, I still Google IAM roles every single time."
+    }
+  ]
 ];
 
 function Wid() {

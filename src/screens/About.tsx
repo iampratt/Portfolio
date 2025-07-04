@@ -35,7 +35,7 @@ function About() {
         <div className='flex flex-col gap-10 justify-center items-start px-10 lg:px-50 text-[#b7ab98]'>
             <div className='font-bold lg:text-[13.9px] tracking-[6.67px] leading-[17.3px]'>ABOUT ME</div>
             <div ref={container} className='text-[2.7em] lg:text-[65px] tracking-[-2.67px] leading-[54.7px] font-bold'>
-                I'm a <span className="text-[#eb5939]">selectively skilled</span> prodcut designer with strong focus on producing high quality & impactful disgital experience.
+                I'm a <span className="text-[#eb5939]">full-stack developer</span> who blends clean code with purposeful design to build fast, scalable, and meaningful digital products.
             </div>
         </div>
     </div>

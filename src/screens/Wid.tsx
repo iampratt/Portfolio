@@ -8,37 +8,25 @@ import { useState, useRef } from "react";
 
 const skillsData = [
   {
-    title: "3D",
-    description: 'I can produce anything that my 16" laptop can render',
+    title: "FULL-STACK",
+    description: "I build fast, responsive, and scalable web & mobile apps."
   },
   {
-    title: "VISUAL",
-    description: [
-      "I search the internet for visual references and then",
-      "combine them to create my own work.",
-    ],
+    title: "GEN AI",
+    description: "I design agentic workflows and intelligent systems."
   },
   {
-    title: "MOTION",
-    description: [
-      "I use fancy motion that makes my design more",
-      "interesting that it actually is",
-    ],
+    title: "DEVOPS",
+    description: "I containerize, automate, and deploy with CI/CD pipelines."
   },
   {
-    title: "PRODUCT",
-    description: [
-      "I utilize common design best practices, test, and re-",
-      "iterate until it works (hopefully).",
-    ],
+    title: "OPEN SOURCE",
+    description: "I contribute to projects that help devs ship faster."
   },
   {
-    title: "TUTORIAL",
-    description: [
-      "I thought I'd make millions of $ from Youtube but I",
-      "didn't",
-    ],
-  },
+    title: "CLOUD",
+    description: "I deploy scalable systems on AWS & Azure."
+  }
 ];
 
 function Wid() {

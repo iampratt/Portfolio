@@ -7,28 +7,28 @@ import useStore from '../store/store';
 
 const projects = [
   {
-    title: "Portfolio 2024",
-    description: "A modern portfolio with interactive animations and smooth transitions",
-    tech: ["React", "TypeScript", "GSAP", "Tailwind"],
-    image: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    title: "HireMind",
+    description: "Automates job discovery and resume tailoring using GPT-4 and LangGraph. Scales parallel job applications and indexes historical interactions for efficiency.",
+    tech: ["React.js", "Node.js", "LangGraph", "GPT-4", "ChromaDB", "BeautifulSoup"],
+    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600" // Placeholder image
   },
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with real-time inventory",
-    tech: ["Next.js", "Supabase", "Stripe", "TailwindCSS"],
-    image: "https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    title: "UniWay",
+    description: "3-role cab management app for colleges with RAG pipeline and vectorized log analysis. Serves 500+ users and optimizes commute times.",
+    tech: ["React Native", "Node.js", "GPT-4", "LangChain", "FAISS"],
+    image: "https://github.com/iampratt/UniWay/blob/master/assets/logo.png?raw=true" // Placeholder image
   },
   {
-    title: "AI Dashboard",
-    description: "Analytics dashboard with AI-powered insights",
-    tech: ["React", "Python", "TensorFlow", "D3.js"],
-    image: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    title: "Crave",
+    description: "Production-grade MERN app for hostel food ordering. Integrates Twilio SMS updates and JWT-secured dashboards for 1000+ students.",
+    tech: ["React.js", "Node.js", "Express", "MongoDB", "Twilio API"],
+    image: "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=600" // Placeholder image
   },
   {
-    title: "Social Media App",
-    description: "Real-time social platform with video streaming",
-    tech: ["React Native", "Firebase", "WebRTC", "Redux"],
-    image: "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    title: "Pixilator",
+    description: "Full-stack app for DALL·E image generation with GPT-3.5 prompt refinement, Redis caching, and CDN delivery. Supports 100+ concurrent users.",
+    tech: ["React.js", "Node.js", "Redis", "Cloudinary", "DALL·E", "GPT-3.5"],
+    image: "https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=600" // Placeholder image
   }
 ];
 
