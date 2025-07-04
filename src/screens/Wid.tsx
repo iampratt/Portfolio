@@ -90,7 +90,7 @@ function Wid() {
                         <div className="font-semibold text-[3.9em] md:text-[4.7em] lg:text-[9em] tracking-[-5.83px] leading-[98px] text-[#0d0d0d] mr-20">
                             {skill.title}
                         </div>
-                        <div className={`${(window.innerWidth<1024) && 'hidden'} font-semibold text-[1.1em] text-[#0d0d0d] w-[20rem]`}>
+                        <div className={`${(window.innerWidth<1024) && 'hidden'} font-semibold text-[1.1em] text-[#f2eaea] w-[20rem]`}>
                             {skill.description}
                         </div>
                     </div>

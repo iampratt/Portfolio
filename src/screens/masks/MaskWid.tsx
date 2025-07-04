@@ -7,28 +7,26 @@ import useStore from "../../store/store";
 import { useState } from "react";
 
 const skillsData = [
-  [
-    {
-      title: "FULL-STACK",
-      description: "I break and fix things across the stack — sometimes on the same day."
-    },
-    {
-      title: "GEN AI",
-      description: "Still waiting for an LLM to replace my 1000-line prompts."
-    },
-    {
-      title: "DEVOPS",
-      description: "99% YAML, 1% hope that the build passes on the first try."
-    },
-    {
-      title: "OPEN SOURCE",
-      description: "PRs at 2 AM, merge conflicts at 9 — the circle of life."
-    },
-    {
-      title: "CLOUD",
-      description: "Yes, I still Google IAM roles every single time."
-    }
-  ]
+  {
+    title: "FULL-STACK",
+    description: "I build fast, responsive, and scalable web & mobile apps."
+  },
+  {
+    title: "GEN AI",
+    description: "I design agentic workflows and intelligent systems."
+  },
+  {
+    title: "DEVOPS",
+    description: "I containerize, automate, and deploy with CI/CD pipelines."
+  },
+  {
+    title: "OPEN SOURCE",
+    description: "I contribute to projects that help devs ship faster."
+  },
+  {
+    title: "CLOUD",
+    description: "I deploy scalable systems on AWS & Azure."
+  }
 ];
 
 function Wid() {
