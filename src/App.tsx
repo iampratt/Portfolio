@@ -4,8 +4,6 @@ import Layout from "./Layout"
 
 function App() {
   
-
-
   const [isLoading, setIsLoading] = useState(true)
 
   return (

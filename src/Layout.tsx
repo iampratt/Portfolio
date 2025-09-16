@@ -15,6 +15,7 @@ import MaskProjects from "./screens/masks/MaskProjects"
 import Hamburger from "./components/hamburger"
 import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
+import Sound from "react-sound";
 import { useEffect, useState } from "react"
 
 function Layout() {
@@ -25,6 +26,7 @@ function Layout() {
     const [innerWidth, setInnerWidth] = useState(window.innerWidth)
     const [open, setOpen] = useState(false)
     const {x, y}=useMousePosition()
+    const [isPlaying, setIsPlaying] = useState(true)
 
     useEffect(()=>{
         if(innerWidth<768){
@@ -76,6 +78,12 @@ function Layout() {
 
   return (
     <div className="relative w-[100dvw] ">
+        <Sound
+            url='../public/bgMusic.mp3'
+            playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.PAUSED}
+            volume={20}
+            loop
+         />
         <div className={`absolute w-full ${!isMaskActive && 'z-10'}`}>
             <div>
                 <Mgss />
@@ -118,16 +126,16 @@ function Layout() {
                 </div>
 
                 {/* Sound toggle */}
-                <div className={`${isMobile && 'hidden'} fixed w-[85px] h-[19px] bottom-[1.5%] lg:bottom-[5%] right-[5%] lg:right-[3%] -rotate-90`}>
+                <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] right-[10%] lg:right-[6%] -rotate-90`}>
                     <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
                         SOUND
                     </div>
                     <div className="flex absolute top-px left-[59px]">
-                        <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap">
-                        ON
+                        <div onClick={()=>setIsPlaying(!isPlaying)} className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap">
+                            ON
                         </div>
-                        <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2">
-                        OFF
+                        <div onClick={()=>setIsPlaying(!isPlaying)} className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2">
+                            OFF
                         </div>
                     </div>
                 </div>
@@ -221,15 +229,15 @@ function Layout() {
                 </div>
 
                 {/* Sound toggle */}
-                <div className={`${isMobile && 'hidden'} fixed w-[85px] h-[19px] bottom-[1.5%] lg:bottom-[5%] right-[5%] lg:right-[3%] -rotate-90`}>
+                <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] right-[10%] lg:right-[6%] -rotate-90`}>
                     <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
                         SOUND
                     </div>
                     <div className="flex absolute top-px left-[59px]">
-                        <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap">
+                        <div onClick={()=>setIsPlaying(!isPlaying)} className="[font-family:'Inter',Helvetica] font-bold text-[#0d0d0d] cursor-pointer text-[13.2px] leading-[17.3px] whitespace-nowrap">
                         ON
                         </div>
-                        <div className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2">
+                        <div onClick={()=>setIsPlaying(!isPlaying)} className="[font-family:'Inter',Helvetica] font-bold text-[#0d0d0d] cursor-pointer text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2">
                         OFF
                         </div>
                     </div>
