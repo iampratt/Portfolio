@@ -10,25 +10,29 @@ const projects = [
     title: "HireMind",
     description: "Automates job discovery and resume tailoring using GPT-4 and LangGraph. Scales parallel job applications and indexes historical interactions for efficiency.",
     tech: ["React.js", "Node.js", "LangGraph", "GPT-4", "ChromaDB", "BeautifulSoup"],
-    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600" // Placeholder image
+    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600",
+    link: "https://hiremindai.vercel.app/"
   },
   {
     title: "UniWay",
     description: "3-role cab management app for colleges with RAG pipeline and vectorized log analysis. Serves 500+ users and optimizes commute times.",
     tech: ["React Native", "Node.js", "GPT-4", "LangChain", "FAISS"],
-    image: "https://github.com/iampratt/UniWay/blob/master/assets/logo.png?raw=true" // Placeholder image
+    image: "https://github.com/iampratt/UniWay/blob/master/assets/logo.png?raw=true",
+    link: "https://github.com/iampratt/UniWay"
   },
   {
     title: "Crave",
     description: "Production-grade MERN app for hostel food ordering. Integrates Twilio SMS updates and JWT-secured dashboards for 1000+ students.",
     tech: ["React.js", "Node.js", "Express", "MongoDB", "Twilio API"],
-    image: "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=600" // Placeholder image
+    image: "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=600",
+    link: "https://cravemuj.vercel.app/"
   },
   {
     title: "Pixilator",
     description: "Full-stack app for DALL·E image generation with GPT-3.5 prompt refinement, Redis caching, and CDN delivery. Supports 100+ concurrent users.",
     tech: ["React.js", "Node.js", "Redis", "Cloudinary", "DALL·E", "GPT-3.5"],
-    image: "https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=600" // Placeholder image
+    image: "https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=600",
+    link: "https://github.com/iampratt/Pixilator"
   }
 ];
 
@@ -95,6 +99,7 @@ function Projects() {
                   <Button
                     variant="ghost"
                     className="text-[#eb5939] hover:text-[#b7ab98] transition-colors cursor-pointer"
+                    onClick={()=>window.open(project.link, '_blank', 'noopener,noreferrer')}
                   >
                     View Project →
                   </Button>
