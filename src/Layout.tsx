@@ -15,7 +15,7 @@ import MaskProjects from "./screens/masks/MaskProjects"
 import Hamburger from "./components/hamburger"
 import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
-import Sound from "react-sound";
+import { useAudio } from "./utils/useAudio"
 import { useEffect, useState } from "react"
 
 function Layout() {
@@ -27,6 +27,13 @@ function Layout() {
     const [open, setOpen] = useState(false)
     const {x, y}=useMousePosition()
     const [isPlaying, setIsPlaying] = useState(true)
+    
+    useAudio({
+        src: "/bgMusic.mp3",
+        volume: 0.5,
+        loop: true,
+        isPlaying,
+    });
 
     useEffect(()=>{
         if(innerWidth<768){
@@ -75,15 +82,8 @@ function Layout() {
         { id: 4, src: "/icon-2.svg", alt: "Social media icon" },
     ];
 
-
   return (
     <div className="relative w-[100dvw] ">
-        <Sound
-            url='../public/bgMusic.mp3'
-            playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.PAUSED}
-            volume={20}
-            loop
-         />
         <div className={`absolute w-full ${!isMaskActive && 'z-10'}`}>
             <div>
                 <Mgss />
