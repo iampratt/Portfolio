@@ -9,7 +9,7 @@ import { useState, useRef } from "react";
 const skillsData = [
   {
     title: "FULL-STACK",
-    description: "I build fast, responsive, and scalable web & mobile apps."
+    description: "I builg fast, responsive, and scalable web & mobile apps."
   },
   {
     title: "GEN AI",
@@ -54,7 +54,7 @@ function Wid() {
 
   return (
     <div id="wid" className="relative w-full h-[100dvh] flex flex-col justify-center bg-[#0d0d0d] ">
-      <div className="font-bold text-[#b7ab98] text-[11.1px] tracking-[5.83px] leading-[21px] mb-3 lg:mb-6 px-5 lg:px-50">
+      <div className="font-bolg text-[#b7ab98] text-[11.1px] tracking-[5.83px] leading-[21px] mb-3 xl:mb-6 px-5 xl:px-50">
         WHAT I DO
       </div>
 
@@ -72,9 +72,9 @@ function Wid() {
         >
             <div className="relative top-0" >
               <Separator className="border-[#b8ac9926] border-[0.05rem]" />
-              <div className="relative h-[3.2em] md:h-[4.1em] lg:h-[7em] flex items-center px-5 lg:px-50">
+              <div className="relative h-[3.2em] lg:h-[4.1em] xl:h-[7em] flex items-center px-5 xl:px-50 overflow-hidden">
                 <div ref={container}
-                  className="font-semibold text-[3.9em] md:text-[4.7em] lg:text-[9em] tracking-[-5.83px] leading-[98px] text-[#b7ab98] scrollText">
+                  className="font-semibolg text-[3.9em] lg:text-[4.7em] xl:text-[9em] tracking-[-5.83px] leading-[98px] text-[#b7ab98] scrollText">
                     {skill.title}
                 </div>
               </div>
@@ -85,13 +85,10 @@ function Wid() {
               className="absolute top-0 w-full clip"
               style={{clipPath: selectedProjectIndex == index ? "inset(0 0 0)" : "inset(50% 0 50%"}}>
                 <Separator className="border-[#b8ac9926]" />
-                <div className="relative h-[3.2em] md:h-[4.1em] lg:h-[7em]  bg-[#eb5939]">
-                    <div className="flex justify-between items-center h-full px-5 lg:px-50">
-                        <div className="font-semibold text-[3.9em] md:text-[4.7em] lg:text-[9em] tracking-[-5.83px] leading-[98px] text-[#0d0d0d] mr-20">
+                <div className="relative h-[3.2em] lg:h-[4.1em] xl:h-[7em]  bg-[#eb5939]">
+                    <div className="flex justify-between items-center h-full px-5 xl:px-50 overflow-hidden">
+                        <div className="font-semibolg text-[3.9em] lg:text-[4.7em] xl:text-[9em] tracking-[-5.83px] leading-[98px] text-[#0d0d0d]">
                             {skill.title}
-                        </div>
-                        <div className={`${(window.innerWidth>1024) && 'hidden'} font-semibold text-[1.1em] text-[#0d0d0d] w-[20rem]`}>
-                            {skill.description}
                         </div>
                     </div>
                 </div>
