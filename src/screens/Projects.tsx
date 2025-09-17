@@ -75,7 +75,7 @@ function Projects() {
           {[...projects].map((project, index) => (
             <div
               key={`${project.title}-${index}`}
-              className="w-[18em] h-[35em] lg:w-[600px] lg:h-[600px] relative "
+              className="w-[18em] h-[35em] lg:w-[55vh] lg:h-[55vh] relative "
             >
               <div className="absolute inset-0 bg-[#1a1a1a] rounded-lg transform transition-transform group-hover:scale-[0.98]">
                 <img
