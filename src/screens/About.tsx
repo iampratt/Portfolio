@@ -2,8 +2,16 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
-import Face from "../components/3d/face";
+import { useRef, Suspense } from "react";
+import { Face } from "../components/3d";
+
+function LoadingSpinner() {
+    return (
+        <div className="absolute inset-0 flex items-center justify-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#eb5939]"/>
+        </div>
+    );
+}
 
 function About() {
     const container=useRef(null)
@@ -30,7 +38,9 @@ function About() {
   return (
     <div id='about' className='relative w-full h-[100dvh] bg-[#0d0d0d] flex justify-center items-center'>
         <div className="absolute h-screen w-full opacity-20">
-            <Face />
+            <Suspense fallback={<LoadingSpinner />}>
+                <Face />
+            </Suspense>
         </div>
         <div className='flex flex-col gap-10 justify-center items-start px-10 lg:px-50 text-[#b7ab98]'>
             <div className='font-bold lg:text-[13.9px] tracking-[6.67px] leading-[17.3px]'>ABOUT ME</div>
