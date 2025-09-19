@@ -17,7 +17,7 @@ function Intro({setIsLoading}: props) {
         <div className="w-[53px] h-[53px] mb-12 [background:url(..//image--page-loading-logo-.png)_50%_50%_/_cover]" />
         {assetsLoading ? (
           <div className="flex flex-col items-center gap-4">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#eb5939]"/>
+            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#eb5939]"/>
             <div className="text-[#b7ab98] text-sm">
               Loading assets... {Math.round(loadingProgress)}%
             </div>
