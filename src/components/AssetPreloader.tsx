@@ -3,7 +3,7 @@ import useStore from '../store/store';
 
 const models = [
     'face/Shaded/base_basic_shaded.glb',
-    'coffee/Pbr/base_basic_pbr.glb',
+    'coffee/Shaded/base_basic_shaded.glb',
     'computer/Shaded/base_basic_shaded.glb'
 ];
 

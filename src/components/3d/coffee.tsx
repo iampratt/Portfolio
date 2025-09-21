@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import * as THREE from 'three'
 
 function CoffeeModel() {
-    const { scene } = useGLTF('coffee/Pbr/base_basic_pbr.glb')
+    const { scene } = useGLTF('coffee/Shaded/base_basic_shaded.glb')
     const modelRef = useRef<THREE.Object3D>(null)
 
     useFrame(() => {
