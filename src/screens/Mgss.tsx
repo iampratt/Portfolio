@@ -3,6 +3,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Suspense } from "react"
 import { Coffee, Computer } from "../components/3d"
+import CountUp from "../components/CountUp"
 
 function LoadingSpinner() {
     return (
@@ -68,7 +69,14 @@ function Mgss() {
                             SINCE
                         </div>
                         <div className="font-bold text-[#b7ab98] text-[4.5em] -mb-5 lg:mb-0 lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
-                            2023
+                            <CountUp
+                                from={1970}
+                                to={2023}
+                                separator=""
+                                direction="up"
+                                duration={1.2}
+                                className="count-up-text"
+                            />
                         </div>
                     </div>
                 </div>
