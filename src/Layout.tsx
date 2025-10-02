@@ -12,6 +12,7 @@ import Wid from "./screens/Wid"
 import MaskWid from "./screens/masks/MaskWid"
 import Projects from "./screens/Projects"
 import MaskProjects from "./screens/masks/MaskProjects"
+import Footer from "./screens/Footer"
 import Hamburger from "./components/hamburger"
 import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
@@ -112,7 +113,7 @@ function Layout() {
                 <About />
                 <Wid />
                 <Projects />
-                <div className="h-screen"/>
+                <Footer />
             </div>
             <div className="fixed">
                 {/* Logo */}
@@ -218,7 +219,7 @@ function Layout() {
                 <MaskAbout />
                 <MaskWid />
                 <MaskProjects />
-                <div className="h-screen">hello</div>
+                <div className="h-screen bg-[#0d0d0d]">hello</div>
             </div>
             <div className="fixed">
                 {/* Logo */}
