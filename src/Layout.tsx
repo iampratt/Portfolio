@@ -16,6 +16,8 @@ import Hamburger from "./components/hamburger"
 import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
 import { useAudio } from "./utils/useAudio"
+import Magnet from "./components/Magnet"
+import { FaLinkedinIn, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa6';
 import { useEffect, useState } from "react"
 
 function Layout() {
@@ -76,10 +78,30 @@ function Layout() {
     ];
 
     const socialIcons = [
-        { id: 1, src: "/icon-3.svg", alt: "Social media icon" },
-        { id: 2, src: "/icon-1.svg", alt: "Social media icon" },
-        { id: 3, src: "/icon-4.svg", alt: "Social media icon" },
-        { id: 4, src: "/icon-2.svg", alt: "Social media icon" },
+        { 
+            id: 1, 
+            src: FaLinkedinIn, 
+            alt: "LinkedIn", 
+            link: "https://www.linkedin.com/in/iampratt/" 
+        },
+        { 
+            id: 2, 
+            src: FaGithub, 
+            alt: "GitHub", 
+            link: "https://github.com/iampratt" 
+        },
+        { 
+            id: 3, 
+            src: FaTwitter, 
+            alt: "Twitter", 
+            link: "https://x.com/iampratt__" 
+        },
+        { 
+            id: 4, 
+            src: FaInstagram, 
+            alt: "Instagram", 
+            link: "https://www.instagram.com/_pratyushsrivastava/" 
+        },
     ];
 
   return (
@@ -116,12 +138,14 @@ function Layout() {
                 {/* Social media links */}
                 <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2`}>
                     {socialIcons.map((icon) => (
-                        <img
-                            key={icon.id}
-                            className="w-5 h-5 mix-blend-difference"
-                            alt={icon.alt}
-                            src={icon.src}
-                        />
+                        <Magnet padding={20} disabled={false} magnetStrength={1}>
+                            <icon.src
+                                key={icon.id}
+                                color="#B7AB98"
+                                className="w-5 h-5 mix-blend-difference"
+                                onClick={()=>window.open(icon.link, '_blank', 'noopener,noreferrer')}
+                            />
+                        </Magnet>
                     ))}
                 </div>
 
@@ -172,12 +196,13 @@ function Layout() {
                                 </nav>
                                 <div className="flex gap-8 mt-12">
                                     {socialIcons.map((icon) => (
-                                        <img
-                                            key={icon.id}
-                                            className="w-7 h-7 mix-blend-difference"
-                                            alt={icon.alt}
-                                            src={icon.src}
-                                        />
+                                        <Magnet padding={20} disabled={false} magnetStrength={1}>
+                                            <icon.src
+                                                key={icon.id}
+                                                className="w-5 h-5 mix-blend-difference"
+                                                onClick={()=>window.open(icon.link, '_blank', 'noopener,noreferrer')}
+                                            />
+                                        </Magnet>
                                     ))}
                                 </div>
                             </div>
@@ -219,12 +244,13 @@ function Layout() {
                 {/* Social media links */}
                 <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2`}>
                     {socialIcons.map((icon) => (
-                        <img
-                            key={icon.id}
-                            className={`w-5 h-5 ${isMaskActive && 'contrast-200 invert grayscale'}`}
-                            alt={icon.alt}
-                            src={icon.src}
-                        />
+                        <Magnet padding={20} disabled={false} magnetStrength={1}>
+                            <icon.src
+                                key={icon.id}
+                                className="w-5 h-5 mix-blend-difference"
+                                onClick={()=>window.open(icon.link, '_blank', 'noopener,noreferrer')}
+                            />
+                        </Magnet>
                     ))}
                 </div>
 
@@ -276,12 +302,13 @@ function Layout() {
                                 </nav>
                                 <div className="flex gap-8 mt-12">
                                     {socialIcons.map((icon) => (
-                                        <img
-                                            key={icon.id}
-                                            className="w-7 h-7 mix-blend-difference"
-                                            alt={icon.alt}
-                                            src={icon.src}
-                                        />
+                                        <Magnet padding={20} disabled={false} magnetStrength={1}>
+                                            <icon.src
+                                                key={icon.id}
+                                                className="w-5 h-5 mix-blend-difference"
+                                                onClick={()=>window.open(icon.link, '_blank', 'noopener,noreferrer')}
+                                            />
+                                        </Magnet>
                                     ))}
                                 </div>
                             </div>
