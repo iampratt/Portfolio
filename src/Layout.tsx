@@ -155,10 +155,10 @@ function Layout() {
                         SOUND
                     </div>
                     <div className="flex absolute top-px left-[59px]">
-                        <div onClick={()=>setIsPlaying(!isPlaying)} className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap">
+                        <div onClick={()=>setIsPlaying(!isPlaying)} className={`${!isPlaying? 'hidden':''} [font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
                             ON
                         </div>
-                        <div onClick={()=>setIsPlaying(!isPlaying)} className="[font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2">
+                        <div onClick={()=>setIsPlaying(!isPlaying)} className={`${isPlaying? 'hidden':''} [font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
                             OFF
                         </div>
                     </div>
@@ -260,10 +260,10 @@ function Layout() {
                         SOUND
                     </div>
                     <div className="flex absolute top-px left-[59px]">
-                        <div onClick={()=>setIsPlaying(!isPlaying)} className="[font-family:'Inter',Helvetica] font-bold text-[#0d0d0d] cursor-pointer text-[13.2px] leading-[17.3px] whitespace-nowrap">
+                        <div onClick={()=>setIsPlaying(!isPlaying)} className={`${!isPlaying?'hidden':''} [font-family:'Inter',Helvetica] font-bold text-[#0d0d0d] cursor-pointer text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
                         ON
                         </div>
-                        <div onClick={()=>setIsPlaying(!isPlaying)} className="[font-family:'Inter',Helvetica] font-bold text-[#0d0d0d] cursor-pointer text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2">
+                        <div onClick={()=>setIsPlaying(!isPlaying)} className={`${isPlaying?'hidden':''} [font-family:'Inter',Helvetica] font-bold text-[#0d0d0d] cursor-pointer text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
                         OFF
                         </div>
                     </div>
