@@ -97,12 +97,12 @@ function Layout() {
             alt: "Twitter", 
             link: "https://x.com/iampratt__" 
         },
-        { 
-            id: 4, 
-            src: FaInstagram, 
-            alt: "Instagram", 
-            link: "https://www.instagram.com/_pratyushsrivastava/" 
-        },
+        // { 
+        //     id: 4, 
+        //     src: FaInstagram, 
+        //     alt: "Instagram", 
+        //     link: "https://www.instagram.com/_pratyushsrivastava/" 
+        // },
     ];
 
   return (
