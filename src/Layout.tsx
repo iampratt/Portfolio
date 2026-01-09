@@ -18,7 +18,7 @@ import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
 import { useAudio } from "./utils/useAudio"
 import Magnet from "./components/Magnet"
-import { FaLinkedinIn, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa6';
+import { FaLinkedinIn, FaGithub, FaTwitter } from 'react-icons/fa6';
 import { useEffect, useState } from "react"
 
 function Layout() {
