@@ -139,13 +139,12 @@ function Layout() {
                     </nav>
 
                     {/* Social media links */}
-                    <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2`}>
+                    <div className={`fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex items-center justify-center z-20 transition-all ${isMobile ? 'flex-row gap-6 bg-[#1a1a1a]/80 backdrop-blur-md border border-[#b7ab98]/20 rounded-full px-6 py-3 shadow-lg' : 'flex-col gap-[30px] p-2'}`}>
                         {socialIcons.map((icon) => (
-                            <Magnet padding={20} disabled={false} magnetStrength={1}>
+                            <Magnet key={icon.id} padding={20} disabled={isMobile} magnetStrength={1}>
                                 <icon.src
-                                    key={icon.id}
                                     color="#B7AB98"
-                                    className="w-5 h-5 mix-blend-difference"
+                                    className={`mix-blend-difference cursor-pointer active:scale-90 transition-transform ${isMobile ? 'w-6 h-6' : 'w-5 h-5'}`}
                                     onClick={() => window.open(icon.link, '_blank', 'noopener,noreferrer')}
                                 />
                             </Magnet>
@@ -245,12 +244,11 @@ function Layout() {
                     </nav>
 
                     {/* Social media links */}
-                    <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2`}>
+                    <div className={`fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex items-center justify-center z-20 transition-all ${isMobile ? 'flex-row gap-6 bg-[#1a1a1a]/80 backdrop-blur-md border border-[#b7ab98]/20 rounded-full px-6 py-3 shadow-lg' : 'flex-col gap-[30px] p-2'}`}>
                         {socialIcons.map((icon) => (
-                            <Magnet padding={20} disabled={false} magnetStrength={1}>
+                            <Magnet key={icon.id} padding={20} disabled={isMobile} magnetStrength={1}>
                                 <icon.src
-                                    key={icon.id}
-                                    className="w-5 h-5 mix-blend-difference"
+                                    className={`mix-blend-difference cursor-pointer active:scale-90 transition-transform ${isMobile ? 'w-6 h-6' : 'w-5 h-5'}`}
                                     onClick={() => window.open(icon.link, '_blank', 'noopener,noreferrer')}
                                 />
                             </Magnet>
