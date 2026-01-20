@@ -83,8 +83,29 @@ function Projects() {
         </h2>
       </div>
 
+      <div className="hidden lg:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-4 z-20 opacity-80 pointer-events-none">
+        <span className="text-[10px] tracking-[0.2em] font-bold text-[#b7ab98] uppercase mb-2">
+          Scroll Down
+        </span>
+        <div className="relative w-[30px] h-[30px] perspective-[35vh]">
+          {[0, 1, 2, 3].map((i) => (
+            <svg
+              key={i}
+              viewBox="0 0 8 4"
+              className="absolute left-1/2 w-full fill-current text-[#b7ab98] animate-scroll-3d opacity-0"
+              style={{
+                animationDelay: `${i * 0.5}s`,
+                top: '50%',
+                transform: 'translateX(-50%)' // Initial mostly handled by keyframes but needed for layout
+              }}
+            >
+              <path d="M 0 0 L 0 2 L 4 4 L 8 2 L 8 0 L 4 2 Z" />
+            </svg>
+          ))}
+        </div>
+      </div>
+
       <div className="flex items-center justify-center min-h-screen w-full lg:block lg:min-h-0 lg:h-screen lg:py-0 pt-32 pb-10">
-        {/* Wrapper for desktop positioning */}
         <div className="lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-y-1/2">
           <div ref={scrollRef} className="flex flex-col lg:flex-row gap-8 lg:pl-0">
             {[...projects].map((project, index) => (

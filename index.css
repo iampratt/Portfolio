@@ -72,3 +72,54 @@ canvas {
     transition-duration: 0.01ms !important;
   }
 }
+
+@keyframes scroll-hint {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes scroll-down-3d {
+  0% {
+    opacity: 0;
+    top: 0;
+    transform: translate(-50%, -50%) scale(.5) rotateX(45deg);
+    color: #b7ab98;
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotateX(0);
+    color: #eb5939;
+    filter: drop-shadow(0 0 4px #eb5939);
+  }
+
+  100% {
+    opacity: 0;
+    top: 60px;
+    transform: translate(-50%, -50%) scale(.5) rotateX(0);
+    color: #b7ab98;
+  }
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 2s infinite ease-in-out;
+}
+
+.animate-scroll-3d {
+  animation: scroll-down-3d 2s infinite cubic-bezier(.8, 0, .2, 1);
+}
