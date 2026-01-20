@@ -14,7 +14,7 @@ import Projects from "./screens/Projects"
 import MaskProjects from "./screens/masks/MaskProjects"
 import Contact from "./screens/Contact"
 import MaskContact from "./screens/masks/MaskContact"
-import Hamburger from "./components/hamburger"
+import Navbar from "./components/Navbar"
 import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
 import { useAudio } from "./utils/useAudio"
@@ -29,7 +29,7 @@ function Layout() {
     const isMobile = useStore().isMobile
     const setIsMobile = useStore().setIsMobile
     const [innerWidth, setInnerWidth] = useState(window.innerWidth)
-    const [open, setOpen] = useState(false)
+
     const { x, y } = useMousePosition()
     const [isPlaying, setIsPlaying] = useState(true)
 
@@ -73,14 +73,6 @@ function Layout() {
             overwrite: 'auto',
         })
     }, [x, y]);
-
-    const navLinks = [
-        { id: "mgss", label: "HOME" },
-        { id: "about", label: "ABOUT" },
-        { id: "wid", label: "WHAT I DO" },
-        { id: "projects", label: "PROJECTS" },
-        { id: "contact", label: "CONTACT" }
-    ];
 
     const socialIcons = [
         {
@@ -128,18 +120,7 @@ function Layout() {
                         src="/icon.svg"
                     />
 
-                    {/* Navigation */}
-                    <nav className={`${isMobile && 'hidden'}z-100 fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]`}>
-                        <ul className="flex flex-col gap-2.5">
-                            {navLinks.map((link) => (
-                                <li key={link.id} className="relative">
-                                    <div onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })} className="[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98] cursor-pointer">
-                                        {link.label}
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
+                    <Navbar />
 
                     {/* Social media links */}
                     <div className={`fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex items-center justify-center z-20 transition-all ${isMobile ? 'flex-row gap-6 bg-[#1a1a1a]/80 backdrop-blur-md border border-[#b7ab98]/20 rounded-full px-6 py-3 shadow-lg' : 'flex-col gap-[30px] p-2'}`}>
@@ -169,50 +150,7 @@ function Layout() {
                         </div>
                     </div>
 
-                    {/* Hamburger */}
-                    {isMobile &&
-                        <div>
-                            {/* Hamburger Icon */}
-                            {/* <button
-                            className="z-50 fixed top-5 right-5 w-10 h-10 flex items-center justify-center"
-                            onClick={() => setOpen((v) => !v)}
-                            aria-label="Toggle menu"
-                        > */}
-                            <Hamburger />
-                            {/* Overlay Menu */}
-                            {open && (
-                                <div className="fixed inset-0 z-40 bg-[#0d0d0d]/90 flex flex-col items-center justify-center transition-all">
-                                    <nav>
-                                        <ul className="flex flex-col gap-8 items-center">
-                                            {navLinks.map((link) => (
-                                                <li key={link.id}>
-                                                    <button
-                                                        className="text-[#b7ab98] text-2xl font-bold tracking-widest"
-                                                        onClick={() => {
-                                                            setOpen(false)
-                                                            document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })
-                                                        }}
-                                                    >
-                                                        {link.label}
-                                                    </button>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </nav>
-                                    <div className="flex gap-8 mt-12">
-                                        {socialIcons.map((icon) => (
-                                            <Magnet padding={20} disabled={false} magnetStrength={1}>
-                                                <icon.src
-                                                    key={icon.id}
-                                                    className="w-5 h-5 mix-blend-difference"
-                                                    onClick={() => window.open(icon.link, '_blank', 'noopener,noreferrer')}
-                                                />
-                                            </Magnet>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </div>}
+                    {/* Hamburger logic handled in Navbar */}
                 </div>
             </div>
 
@@ -233,18 +171,7 @@ function Layout() {
                         src="/icon.svg"
                     />
 
-                    {/* Navigation */}
-                    <nav className={`${isMobile && 'hidden'} fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]`}>
-                        <ul className="flex flex-col gap-2.5">
-                            {navLinks.map((link) => (
-                                <li key={link.id} className="relative">
-                                    <div onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })} className={`[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#0d0d0d] cursor-pointer`}>
-                                        {link.label}
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
+                    <Navbar />
 
                     {/* Social media links */}
                     <div className={`fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex items-center justify-center z-20 transition-all ${isMobile ? 'flex-row gap-6 bg-[#1a1a1a]/80 backdrop-blur-md border border-[#b7ab98]/20 rounded-full px-6 py-3 shadow-lg' : 'flex-col gap-[30px] p-2'}`}>
@@ -273,51 +200,7 @@ function Layout() {
                         </div>
                     </div>
 
-                    {/* Hamburger */}
-                    {isMobile &&
-                        <div>
-                            {/* Hamburger Icon */}
-                            <button
-                                className="z-50 fixed top-5 right-5 w-10 h-10 flex items-center justify-center"
-                                onClick={() => setOpen((v) => !v)}
-                                aria-label="Toggle menu"
-                            >
-                                <Hamburger />
-                            </button>
-                            {/* Overlay Menu */}
-                            {open && (
-                                <div className="fixed inset-0 z-40 bg-[#0d0d0d]/90 flex flex-col items-center justify-center transition-all">
-                                    <nav>
-                                        <ul className="flex flex-col gap-8 items-center">
-                                            {navLinks.map((link) => (
-                                                <li key={link.id}>
-                                                    <button
-                                                        className="text-[#b7ab98] text-2xl font-bold tracking-widest"
-                                                        onClick={() => {
-                                                            setOpen(false)
-                                                            document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })
-                                                        }}
-                                                    >
-                                                        {link.label}
-                                                    </button>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </nav>
-                                    <div className="flex gap-8 mt-12">
-                                        {socialIcons.map((icon) => (
-                                            <Magnet padding={20} disabled={false} magnetStrength={1}>
-                                                <icon.src
-                                                    key={icon.id}
-                                                    className="w-5 h-5 mix-blend-difference"
-                                                    onClick={() => window.open(icon.link, '_blank', 'noopener,noreferrer')}
-                                                />
-                                            </Magnet>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </div>}
+                    {/* Hamburger removed from mask layer */}
                 </div>
             </div>
         </div>
