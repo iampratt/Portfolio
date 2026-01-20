@@ -54,7 +54,21 @@ function Wid() {
 
   return (
     <div id="wid" className="relative w-full h-[100dvh] flex flex-col justify-center bg-[#0d0d0d] overflow-hidden">
-      <div className="font-bolg text-[#b7ab98] text-[10px] lg:text-[11.1px] tracking-[4px] lg:tracking-[5.83px] leading-[21px] mb-3 xl:mb-6 px-5 xl:px-50">
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full z-0 opacity-60">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="/balatro.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-[#0d0d0d]/60 "></div>
+      </div>
+
+      <div className="font-bolg text-[#b7ab98] text-[10px] lg:text-[11.1px] tracking-[4px] lg:tracking-[5.83px] leading-[21px] mb-3 xl:mb-6 px-5 xl:px-50 relative z-10">
         WHAT I DO
       </div>
 
