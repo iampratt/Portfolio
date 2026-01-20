@@ -96,6 +96,8 @@ function Projects() {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-[45%] object-cover opacity-80"
                   />
                   <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">

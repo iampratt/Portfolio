@@ -1,34 +1,74 @@
-@import url("https://fonts.googleapis.com/css?family=Inter:700,400|Nunito+Sans:700");
 @import "tailwindcss";
 @tailwind utilities;
+
+/* Preconnect and font loading optimization */
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+  src: local('Inter');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-display: swap;
+  src: local('Nunito Sans');
+}
 
 @layer components {
   .all-\[unset\] {
     all: unset;
   }
 }
-html{
+
+html {
   max-width: 100vw;
   overflow-x: hidden;
   -webkit-user-select: none;
   -ms-user-select: none;
-  user-select: none; 
+  user-select: none;
   background-color: #0d0d0d;
 }
+
 body {
-    background-color: #0d0d0d;
+  background-color: #0d0d0d;
 }
-:root{
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+:root {
+  font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 100%;
 }
-.mask{
+
+/* GPU-accelerated mask layer */
+.mask {
   mask-image: url(/public/mask.svg);
   background-color: #eb5939;
   mask-repeat: no-repeat;
   color: black;
+  will-change: mask-position, mask-size;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
-.clip{
+
+/* GPU-optimized clip animation */
+.clip {
   clip-path: inset(50% 0 50%);
   transition: clip-path cubic-bezier(0, 0, 0.58, 1) .4s;
+  will-change: clip-path;
+}
+
+/* 3D canvas performance hints */
+canvas {
+  will-change: contents;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

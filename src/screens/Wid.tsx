@@ -4,7 +4,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { Separator } from "../components/separator";
 import useStore from "../store/store";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const skillsData = [
   {
@@ -32,8 +32,50 @@ const skillsData = [
 function Wid() {
 
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(-1)
+  const [isVideoVisible, setIsVideoVisible] = useState(false)
   const container = useRef(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
   const setIsMaskActive = useStore().setIsMaskActive
+
+  // Lazy load video when section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVideoVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1, rootMargin: '200px' }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  // Play/pause video based on visibility
+  useEffect(() => {
+    if (!videoRef.current || !isVideoVisible) return
+
+    const video = videoRef.current
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => { })
+        } else {
+          video.pause()
+        }
+      },
+      { threshold: 0.25 }
+    )
+
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [isVideoVisible])
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -53,18 +95,21 @@ function Wid() {
   }, [])
 
   return (
-    <div id="wid" className="relative w-full h-[100dvh] flex flex-col justify-center bg-[#0d0d0d] overflow-hidden">
-      {/* Background Video */}
+    <div id="wid" ref={sectionRef} className="relative w-full h-[100dvh] flex flex-col justify-center bg-[#0d0d0d] overflow-hidden">
+      {/* Background Video - Lazy loaded */}
       <div className="absolute inset-0 w-full h-full z-0 opacity-60">
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src="/balatro.mp4" type="video/mp4" />
-        </video>
+        {isVideoVisible && (
+          <video
+            ref={videoRef}
+            className="w-full h-full object-cover"
+            muted
+            loop
+            playsInline
+            preload="none"
+          >
+            <source src="/balatro.mp4" type="video/mp4" />
+          </video>
+        )}
         <div className="absolute inset-0 bg-[#0d0d0d]/60 "></div>
       </div>
 

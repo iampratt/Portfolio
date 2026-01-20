@@ -67,8 +67,10 @@ function Layout() {
         gsap.to('.mask', {
             maskPosition: `${x - maskSize / 2}px ${y - maskSize / 2}px`,
             maskSize: isMaskActive ? `${maskSize}px` : '0px',
-            duration: 1.2,
+            duration: 0.8,
             ease: "power4.out",
+            force3D: true,
+            overwrite: 'auto',
         })
     }, [x, y]);
 
