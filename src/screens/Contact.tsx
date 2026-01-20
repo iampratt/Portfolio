@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import Magnet from '../components/Magnet';
@@ -10,6 +10,29 @@ const Contact = () => {
     const formRef = useRef<HTMLFormElement>(null);
     const isMobile = useStore((state) => state.isMobile);
     const setIsMaskActive = useStore((state) => state.setIsMaskActive);
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const { name, email, subject, message } = formData;
+
+        const mailtoLink = `mailto:pratyush0705@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+
+        window.location.href = mailtoLink;
+    };
 
     useGSAP(() => {
         const tl = gsap.timeline({
@@ -98,23 +121,31 @@ const Contact = () => {
                     <form
                         ref={formRef}
                         className="relative bg-[#0d0d0d]/40 backdrop-blur-xl border border-[#ffffff]/10 rounded-3xl p-8 lg:p-12 shadow-2xl flex flex-col gap-6"
-                        onSubmit={(e) => e.preventDefault()}
+                        onSubmit={handleSubmit}
                     >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="flex flex-col gap-2">
                                 <label className="text-[#666] text-xs font-bold uppercase tracking-wider ml-1">Name</label>
                                 <input
                                     type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
                                     placeholder="John Doe"
                                     className="w-full bg-[#1a1a1a]/50 border border-[#333] focus:border-[#eb5939] rounded-xl px-5 py-4 text-[#e6e6e6] placeholder:text-[#4d4d4d] outline-none transition-all duration-300"
+                                    required
                                 />
                             </div>
                             <div className="flex flex-col gap-2">
                                 <label className="text-[#666] text-xs font-bold uppercase tracking-wider ml-1">Email</label>
                                 <input
                                     type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     placeholder="john@example.com"
                                     className="w-full bg-[#1a1a1a]/50 border border-[#333] focus:border-[#eb5939] rounded-xl px-5 py-4 text-[#e6e6e6] placeholder:text-[#4d4d4d] outline-none transition-all duration-300"
+                                    required
                                 />
                             </div>
                         </div>
@@ -123,23 +154,31 @@ const Contact = () => {
                             <label className="text-[#666] text-xs font-bold uppercase tracking-wider ml-1">Subject</label>
                             <input
                                 type="text"
+                                name="subject"
+                                value={formData.subject}
+                                onChange={handleChange}
                                 placeholder="Project Discussion"
                                 className="w-full bg-[#1a1a1a]/50 border border-[#333] focus:border-[#eb5939] rounded-xl px-5 py-4 text-[#e6e6e6] placeholder:text-[#4d4d4d] outline-none transition-all duration-300"
+                                required
                             />
                         </div>
 
                         <div className="flex flex-col gap-2">
                             <label className="text-[#666] text-xs font-bold uppercase tracking-wider ml-1">Message</label>
                             <textarea
+                                name="message"
                                 rows={5}
+                                value={formData.message}
+                                onChange={handleChange}
                                 placeholder="Tell me about your project..."
                                 className="w-full bg-[#1a1a1a]/50 border border-[#333] focus:border-[#eb5939] rounded-xl px-5 py-4 text-[#e6e6e6] placeholder:text-[#4d4d4d] outline-none resize-none transition-all duration-300"
+                                required
                             />
                         </div>
 
                         <div className="mt-4 flex justify-end">
                             <Magnet padding={20} disabled={isMobile} magnetStrength={3}>
-                                <button className="group relative px-8 py-4 bg-[#eb5939] text-[#0d0d0d] font-bold rounded-full overflow-hidden transition-all hover:bg-[#d14d31] active:scale-95">
+                                <button type="submit" className="group relative px-8 py-4 bg-[#eb5939] text-[#0d0d0d] font-bold rounded-full overflow-hidden transition-all hover:bg-[#d14d31] active:scale-95 cursor-pointer">
                                     <span className="relative z-10 flex items-center gap-3">
                                         Send Message
                                         <FaPaperPlane className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
