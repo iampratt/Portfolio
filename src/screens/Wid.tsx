@@ -38,7 +38,6 @@ function Wid() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const setIsMaskActive = useStore().setIsMaskActive
 
-  // Lazy load video when section is in view
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -57,7 +56,6 @@ function Wid() {
     return () => observer.disconnect()
   }, [])
 
-  // Play/pause video based on visibility
   useEffect(() => {
     if (!videoRef.current || !isVideoVisible) return
 
@@ -96,7 +94,6 @@ function Wid() {
 
   return (
     <div id="wid" ref={sectionRef} className="relative w-full h-[100dvh] flex flex-col justify-center bg-[#0d0d0d] overflow-hidden">
-      {/* Background Video - Lazy loaded */}
       <div className="absolute inset-0 w-full h-full z-0 opacity-60">
         {isVideoVisible && (
           <video
@@ -128,7 +125,6 @@ function Wid() {
             setIsMaskActive(true)
           }}
           onClick={() => {
-            // Toggle selection on mobile tap
             setSelectedProjectIndex(selectedProjectIndex === index ? -1 : index)
             if (selectedProjectIndex !== index) setIsMaskActive(false)
             else setIsMaskActive(true)

@@ -12,7 +12,8 @@ import Wid from "./screens/Wid"
 import MaskWid from "./screens/masks/MaskWid"
 import Projects from "./screens/Projects"
 import MaskProjects from "./screens/masks/MaskProjects"
-// import Footer from "./screens/Footer"
+import Contact from "./screens/Contact"
+import MaskContact from "./screens/masks/MaskContact"
 import Hamburger from "./components/hamburger"
 import useStore from "./store/store"
 import useMousePosition from "./utils/useMousePosition"
@@ -77,7 +78,8 @@ function Layout() {
         { id: "mgss", label: "HOME" },
         { id: "about", label: "ABOUT" },
         { id: "wid", label: "WHAT I DO" },
-        { id: "projects", label: "PROJECTS" }
+        { id: "projects", label: "PROJECTS" },
+        { id: "contact", label: "CONTACT" }
     ];
 
     const socialIcons = [
@@ -115,7 +117,7 @@ function Layout() {
                     <About />
                     <Wid />
                     <Projects />
-                    {/* <Footer /> */}
+                    <Contact />
                     <MobileNotice />
                 </div>
                 <div className="fixed">
@@ -127,11 +129,11 @@ function Layout() {
                     />
 
                     {/* Navigation */}
-                    <nav className={`${isMobile && 'hidden'} fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]`}>
+                    <nav className={`${isMobile && 'hidden'}z-100 fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]`}>
                         <ul className="flex flex-col gap-2.5">
                             {navLinks.map((link) => (
                                 <li key={link.id} className="relative">
-                                    <div onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })} className="[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98]">
+                                    <div onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })} className="[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98] cursor-pointer">
                                         {link.label}
                                     </div>
                                 </li>
@@ -157,7 +159,7 @@ function Layout() {
                         <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
                             SOUND
                         </div>
-                        <div className="flex absolute top-px left-[59px]">
+                        <div className="flex absolute top-px left-[59px] cursor-pointer">
                             <div onClick={() => setIsPlaying(!isPlaying)} className={`${!isPlaying ? 'hidden' : ''} [font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
                                 ON
                             </div>
@@ -221,7 +223,7 @@ function Layout() {
                     <MaskAbout />
                     <MaskWid />
                     <MaskProjects />
-                    {/* <div className="h-screen bg-[#0d0d0d]">hello</div> */}
+                    <MaskContact />
                 </div>
                 <div className="fixed">
                     {/* Logo */}
