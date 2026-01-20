@@ -31,68 +31,74 @@ const skillsData = [
 
 function Wid() {
 
-    const [selectedProjectIndex, setSelectedProjectIndex] = useState(-1)
-    const container=useRef(null)
-    const setIsMaskActive=useStore().setIsMaskActive
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(-1)
+  const container = useRef(null)
+  const setIsMaskActive = useStore().setIsMaskActive
 
-    useGSAP(()=>{
-        gsap.registerPlugin(ScrollTrigger, SplitText);
-        const text = SplitText.create('.scrollText', { type: 'chars' });
-        gsap.from(text.chars, {
-            scrollTrigger: {
-                trigger: '.scrollText',
-                start: "top 70%",
-                end: "top 10%",
-                scrub:true,
-            },
-            opacity: 0.1,
-            stagger: 0.1,
-            ease: "none"
-        });
-        gsap.to('.scrollText', { opacity: 1 });
-    }, [])
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+    const text = SplitText.create('.scrollText', { type: 'chars' });
+    gsap.from(text.chars, {
+      scrollTrigger: {
+        trigger: '.scrollText',
+        start: "top 70%",
+        end: "top 10%",
+        scrub: true,
+      },
+      opacity: 0.1,
+      stagger: 0.1,
+      ease: "none"
+    });
+    gsap.to('.scrollText', { opacity: 1 });
+  }, [])
 
   return (
-    <div id="wid" className="relative w-full h-[100dvh] flex flex-col justify-center bg-[#0d0d0d] ">
-      <div className="font-bolg text-[#b7ab98] text-[11.1px] tracking-[5.83px] leading-[21px] mb-3 xl:mb-6 px-5 xl:px-50">
+    <div id="wid" className="relative w-full h-[100dvh] flex flex-col justify-center bg-[#0d0d0d] overflow-hidden">
+      <div className="font-bolg text-[#b7ab98] text-[10px] lg:text-[11.1px] tracking-[4px] lg:tracking-[5.83px] leading-[21px] mb-3 xl:mb-6 px-5 xl:px-50">
         WHAT I DO
       </div>
 
       {skillsData.map((skill, index) => (
-        <div 
+        <div
           key={`skill-${index}`}
           onMouseEnter={() => {
             setSelectedProjectIndex(index)
           }}
-          onMouseLeave={()=>{
-              setSelectedProjectIndex(-1)
-              setIsMaskActive(true)
-          }} 
+          onMouseLeave={() => {
+            setSelectedProjectIndex(-1)
+            setIsMaskActive(true)
+          }}
+          onClick={() => {
+            // Toggle selection on mobile tap
+            setSelectedProjectIndex(selectedProjectIndex === index ? -1 : index)
+            if (selectedProjectIndex !== index) setIsMaskActive(false)
+            else setIsMaskActive(true)
+          }}
           className="relative text-wrapper"
         >
-            <div className="relative top-0" >
-              <Separator className="border-[#b8ac9926] border-[0.05rem]" />
-              <div className="relative h-[3.2em] lg:h-[4.1em] xl:h-[7em] flex items-center px-5 xl:px-50 overflow-hidden">
-                <div ref={container}
-                  className="font-semibolg text-[3.9em] lg:text-[4.7em] xl:text-[9em] tracking-[-5.83px] leading-[98px] text-[#b7ab98] scrollText">
-                    {skill.title}
+          <div className="relative top-0" >
+            <Separator className="border-[#b8ac9926] border-[0.05rem]" />
+            <div className="relative h-[80px] lg:h-[4.1em] xl:h-[7em] flex items-center px-5 xl:px-50 overflow-clip">
+              <div ref={container}
+                className="font-semibolg text-[2.5rem] lg:text-[4.7em] xl:text-[9em] tracking-[-2px] lg:tracking-[-5.83px] leading-tight lg:leading-[98px] text-[#b7ab98] scrollText whitespace-nowrap">
+                {skill.title}
+              </div>
+            </div>
+          </div>
+
+          <div
+            key={`skill-${index}-2`}
+            className="absolute top-0 w-full clip pointer-events-none"
+            style={{ clipPath: selectedProjectIndex == index ? "inset(0 0 0)" : "inset(50% 0 50%" }}>
+            <Separator className="border-[#b8ac9926]" />
+            <div className="relative h-[80px] lg:h-[4.1em] xl:h-[7em]  bg-[#eb5939]">
+              <div className="flex justify-between items-center h-full px-5 xl:px-50 overflow-clip">
+                <div className="font-semibolg text-[2.5rem] lg:text-[4.7em] xl:text-[9em] tracking-[-2px] lg:tracking-[-5.83px] leading-tight lg:leading-[98px] text-[#0d0d0d] whitespace-nowrap">
+                  {skill.title}
                 </div>
               </div>
             </div>
-
-            <div
-              key={`skill-${index}-2`} 
-              className="absolute top-0 w-full clip"
-              style={{clipPath: selectedProjectIndex == index ? "inset(0 0 0)" : "inset(50% 0 50%"}}>
-                <Separator className="border-[#b8ac9926]" />
-                <div className="relative h-[3.2em] lg:h-[4.1em] xl:h-[7em]  bg-[#eb5939]">
-                    <div className="flex justify-between items-center h-full px-5 xl:px-50 overflow-hidden">
-                        <div className="font-semibolg text-[3.9em] lg:text-[4.7em] xl:text-[9em] tracking-[-5.83px] leading-[98px] text-[#0d0d0d]">
-                            {skill.title}
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
       ))}
       <Separator className="border-[#b8ac9926] border-1" />

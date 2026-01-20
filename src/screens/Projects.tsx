@@ -43,74 +43,88 @@ const projects = [
 function Projects() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const setIsMaskActive=useStore().setIsMaskActive
+  const setIsMaskActive = useStore().setIsMaskActive
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.to(scrollRef.current, {
-      x: -(scrollRef.current?.scrollWidth || 0),
-      ease: "none",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        pin: true,
-        scrub: 1,
-        end: "+=5000",
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      if (scrollRef.current && containerRef.current) {
+        gsap.to(scrollRef.current, {
+          x: -(scrollRef.current.scrollWidth),
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            pin: true,
+            scrub: 1,
+            end: () => "+=" + scrollRef.current!.scrollWidth,
+            invalidateOnRefresh: true,
+          }
+        });
       }
     });
+
+    return () => mm.revert();
   }, []);
 
   return (
-    <div 
+    <div
       id="projects"
-      onMouseLeave={()=>{
+      onMouseLeave={() => {
         setIsMaskActive(true)
       }}
       ref={containerRef}
-      className="relative w-full h-screen bg-[#0d0d0d]">
-      <div className="absolute top-20 px-10 lg:px-50">
-        <h2 className="font-bold text-[#b7ab98] text-[2em] tracking-[6.67px] leading-[1em] lg:leading-[17.3px]">
+      className="relative w-full min-h-screen bg-[#0d0d0d] overflow-x-hidden">
+      <div className="absolute top-10 lg:top-20 px-5 lg:px-50 z-10">
+        <h2 className="font-bold text-[#b7ab98] text-[20px] lg:text-[2em] tracking-[4px] lg:tracking-[6.67px] leading-[1em] lg:leading-[17.3px]">
           SELECTED WORKS
         </h2>
       </div>
 
-      <div className="absolute top-1/2 left-1/8 lg:left-1/2 -translate-y-1/2 pt-20 lg:pt-0">
-        <div ref={scrollRef} className="flex gap-8 ">
-          {[...projects].map((project, index) => (
-            <div
-              key={`${project.title}-${index}`}
-              className="w-[18em] h-[35em] lg:w-[55vh] lg:h-[55vh] relative "
-            >
-              <div className="absolute inset-0 bg-[#1a1a1a] rounded-lg transform transition-transform group-hover:scale-[0.98]">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-1/2 object-cover rounded-t-lg opacity-80"
-                />
-                <div className="p-6 space-y-4">
-                  <h3 className="text-[#eb5939] font-bold text-2xl">{project.title}</h3>
-                  <p className="text-[#b7ab98] text-sm">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 text-xs font-medium bg-[#2a2a2a] text-[#b7ab98] rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+      <div className="flex items-center justify-center min-h-screen w-full lg:block lg:min-h-0 lg:h-screen lg:py-0 pt-32 pb-10">
+        {/* Wrapper for desktop positioning */}
+        <div className="lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-y-1/2">
+          <div ref={scrollRef} className="flex flex-col lg:flex-row gap-8 lg:pl-0">
+            {[...projects].map((project, index) => (
+              <div
+                key={`${project.title}-${index}`}
+                className="w-[90vw] h-[500px] lg:w-[55vh] lg:h-[55vh] relative flex-shrink-0 mx-auto lg:mx-0"
+              >
+                <div className="absolute inset-0 bg-[#1a1a1a] rounded-lg transform transition-transform group-hover:scale-[0.98] overflow-hidden flex flex-col">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-1/2 object-cover opacity-80"
+                  />
+                  <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-[#eb5939] font-bold text-2xl mb-2">{project.title}</h3>
+                      <p className="text-[#b7ab98] text-sm line-clamp-3">{project.description}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 text-xs font-medium bg-[#2a2a2a] text-[#b7ab98] rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <Button
+                      variant="ghost"
+                      className="text-[#eb5939] hover:text-[#b7ab98] transition-colors cursor-pointer w-fit pl-0 hover:bg-transparent"
+                      onClick={() => window.open(project.link, '_blank', 'noopener,noreferrer')}
+                    >
+                      View Project →
+                    </Button>
                   </div>
-                  <Button
-                    variant="ghost"
-                    className="text-[#eb5939] hover:text-[#b7ab98] transition-colors cursor-pointer"
-                    onClick={()=>window.open(project.link, '_blank', 'noopener,noreferrer')}
-                  >
-                    View Project →
-                  </Button>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

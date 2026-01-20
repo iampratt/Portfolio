@@ -36,36 +36,36 @@ function Mgss() {
   return (
     <>
         <div id="mgss" className="smooth-wrapper relative w-full h-[100dvh] bg-[#0d0d0d]">
-            <div className="absolute -left-[330px] lg:-left-[45.2em] top-50 lg:top-[200px] h-screen w-[170vw] lg:w-screen opacity-20">
+            <div className="absolute -left-[50vw] md:-left-[330px] lg:-left-[45.2em] top-40 lg:top-[200px] h-screen w-[200vw] lg:w-screen opacity-20">
                 <Suspense fallback={<LoadingSpinner />}>
                     <Coffee />
                 </Suspense>
             </div>
-            <div className="absolute -right-[10em] lg:-right-[30em] -top-50 lg:-top-[17em] h-screen w-[170vw] lg:w-screen opacity-20">
+            <div className="absolute -right-[50vw] md:-right-[10em] lg:-right-[30em] -top-20 lg:-top-[17em] h-screen w-[200vw] lg:w-screen opacity-20">
                 <Suspense fallback={<LoadingSpinner />}>
                     <Computer />
                 </Suspense>
             </div>
             
-            <div className="flex flex-col lg:gap-3 mx-auto py-16 items-center justify-center min-h-screen">
+            <div className="flex flex-col lg:gap-3 mx-auto py-16 items-center justify-center min-h-screen overflow-hidden">
                 <div className="text-center">
-                    <div className="font-bold text-[#b7ab98] text-[13.9px] tracking-[6.67px] leading-[17.3px]">
+                    <div className="font-bold text-[#b7ab98] text-[10px] lg:text-[13.9px] tracking-[4px] lg:tracking-[6.67px] leading-[17.3px]">
                         PRATYUSH SRIVASTAVA
                     </div>
                 </div>
                 <div  className="flex relative items-center justify-center">
                     {/* Making good shit since 0000 */}
-                    <div className="flex flex-col lg:gap-3 justify-center items-center mt-15 lg:mt-24">
-                        <div className="font-bold text-[#b7ab98] text-[4.5em] -mb-5 lg:mb-0 lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                    <div className="flex flex-col lg:gap-3 justify-center items-center mt-10 lg:mt-24">
+                        <div className="font-bold text-[#b7ab98] text-[2.8em] lg:text-[138.1px] tracking-[-2px] lg:tracking-[-5.83px] leading-tight lg:leading-[98px]">
                             MAKING
                         </div>
-                        <div className="font-bold text-[#eb5939] text-[4.5em] -mb-5 lg:mb-0 lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[#eb5939] text-[2.8em] lg:text-[138.1px] tracking-[-2px] lg:tracking-[-5.83px] leading-tight lg:leading-[98px]">
                             GOOD
                         </div>
-                        <div className="font-bold text-[#eb5939] text-[4.5em] -mb-5 lg:mb-0 lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[#eb5939] text-[2.8em] lg:text-[138.1px] tracking-[-2px] lg:tracking-[-5.83px] leading-tight lg:leading-[98px]">
                             THINGS
                         </div>
-                        <div className="font-bold text-[#b7ab98] text-[4.5em] -mb-5 lg:mb-0 lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
+                        <div className="font-bold text-[#b7ab98] text-[2.8em] lg:text-[138.1px] tracking-[-2px] lg:tracking-[-5.83px] leading-tight lg:leading-[98px]">
                             SINCE
                         </div>
                         <div className="font-bold text-[#b7ab98] text-[4.5em] -mb-5 lg:mb-0 lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
