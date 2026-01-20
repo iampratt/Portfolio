@@ -69,7 +69,6 @@ function Layout() {
             maskSize: isMaskActive ? `${maskSize}px` : '0px',
             duration: 0.8,
             ease: "power4.out",
-            force3D: true,
             overwrite: 'auto',
         })
     }, [x, y]);
