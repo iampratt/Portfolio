@@ -7,32 +7,36 @@ import useStore from '../store/store';
 
 const projects = [
   {
+    title: "Pixilator",
+    description: "AI image generation platform with multi-model fallback and automated prompt refinement for reliable high-quality outputs.",
+    tech: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Hugging Face"],
+    image: "Projects/pixilator.png",
+    link: "https://pixilator.vercel.app/",
+    github: "https://github.com/iampratt/pixilator"
+  },
+  {
     title: "HireMind",
-    description: "Automates job discovery and resume tailoring using GPT-4 and LangGraph. Scales parallel job applications and indexes historical interactions for efficiency.",
-    tech: ["React.js", "Node.js", "LangGraph", "GPT-4", "ChromaDB", "BeautifulSoup"],
-    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600",
-    link: "https://hiremindai.vercel.app/"
+    description: "AI-driven job discovery and resume tailoring platform that automates applications and avoids duplicate submissions using historical indexing.",
+    tech: ["React.js", "Node.js", "LangGraph", "ChromaDB", "GPT-4", "BeautifulSoup"],
+    image: "Projects/hiremind.png",
+    link: "https://hiremindai.vercel.app/",
+    github: "https://github.com/iampratt/HireMind"
   },
   {
     title: "UniWay",
-    description: "3-role cab management app for colleges with RAG pipeline and vectorized log analysis. Serves 500+ users and optimizes commute times.",
-    tech: ["React Native", "Node.js", "GPT-4", "LangChain", "FAISS"],
-    image: "https://github.com/iampratt/UniWay/blob/master/assets/logo.png?raw=true",
-    link: "https://github.com/iampratt/UniWay"
+    description: "College cab management app with student, driver and admin roles. Uses RAG and vector search to optimize routes and reduce commute time.",
+    tech: ["React Native", "Expo", "Node.js", "Express", "MongoDB", "LangChain", "FAISS"],
+    image: "Projects/uniway.png",
+    link: "https://github.com/iampratt/uniway",
+    github: "https://github.com/iampratt/uniway"
   },
   {
     title: "Crave",
-    description: "Production-grade MERN app for hostel food ordering. Integrates Twilio SMS updates and JWT-secured dashboards for 1000+ students.",
-    tech: ["React.js", "Node.js", "Express", "MongoDB", "Twilio API"],
-    image: "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=600",
-    link: "https://cravemuj.vercel.app/"
-  },
-  {
-    title: "Pixilator",
-    description: "Full-stack app for DALL·E image generation with GPT-3.5 prompt refinement, Redis caching, and CDN delivery. Supports 100+ concurrent users.",
-    tech: ["React.js", "Node.js", "Redis", "Cloudinary", "DALL·E", "GPT-3.5"],
-    image: "https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=600",
-    link: "https://github.com/iampratt/Pixilator"
+    description: "Production-ready MERN app for hostel food ordering with live SMS updates and JWT-secured vendor dashboards.",
+    tech: ["React.js", "Node.js", "Express", "MongoDB", "Twilio API", "JWT"],
+    image: "Projects/crave.png",
+    link: "https://cravemuj.vercel.app/",
+    github: "https://github.com/iampratt/crave"
   }
 ];
 
