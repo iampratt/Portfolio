@@ -36,12 +36,12 @@ function Mgss() {
     return (
         <>
             <div id="mgss" className="smooth-wrapper relative w-full h-[100dvh] bg-[#0d0d0d]">
-                <div className="absolute -left-[115vw] md:-left-[760px] lg:-left-[32.2em] top-40 lg:top-[200px] h-screen w-[200vw] lg:w-screen opacity-20">
+                <div className="absolute -left-[115vw] md:-left-[760px] lg:-left-[44.2em] top-40 lg:top-[200px] h-screen w-[200vw] lg:w-screen opacity-20">
                     <Suspense fallback={<LoadingSpinner />}>
                         <Coffee />
                     </Suspense>
                 </div>
-                <div className="absolute -right-[50vw] md:-right-[35em] lg:-right-[20em] -top-20 md:-top-45 lg:-top-[12em] h-screen w-[200vw] lg:w-screen opacity-20">
+                <div className="absolute -right-[50vw] md:-right-[35em] lg:-right-[30em] -top-20 md:-top-45 lg:-top-[12em] h-screen w-[200vw] lg:w-screen opacity-20">
                     <Suspense fallback={<LoadingSpinner />}>
                         <Computer />
                     </Suspense>
