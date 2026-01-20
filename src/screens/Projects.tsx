@@ -90,13 +90,13 @@ function Projects() {
             {[...projects].map((project, index) => (
               <div
                 key={`${project.title}-${index}`}
-                className="w-[90vw] h-[500px] lg:w-[55vh] lg:h-[55vh] relative flex-shrink-0 mx-auto lg:mx-0"
+                className="w-[90vw] h-[500px] lg:w-[60vh] lg:h-[60vh] lg:min-h-[500px] lg:min-w-[500px] relative flex-shrink-0 mx-auto lg:mx-0"
               >
                 <div className="absolute inset-0 bg-[#1a1a1a] rounded-lg transform transition-transform group-hover:scale-[0.98] overflow-hidden flex flex-col">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-1/2 object-cover opacity-80"
+                    className="w-full h-[45%] object-cover opacity-80"
                   />
                   <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
                     <div>
