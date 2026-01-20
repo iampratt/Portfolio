@@ -20,17 +20,18 @@ import { useAudio } from "./utils/useAudio"
 import Magnet from "./components/Magnet"
 import { FaLinkedinIn, FaGithub, FaTwitter } from 'react-icons/fa6';
 import { useEffect, useState } from "react"
+import MobileNotice from "./components/MobileNotice"
 
 function Layout() {
-    const isMaskActive=useStore().isMaskActive
-    const maskSize=useStore().maskSize;
-    const isMobile=useStore().isMobile
-    const setIsMobile=useStore().setIsMobile
+    const isMaskActive = useStore().isMaskActive
+    const maskSize = useStore().maskSize;
+    const isMobile = useStore().isMobile
+    const setIsMobile = useStore().setIsMobile
     const [innerWidth, setInnerWidth] = useState(window.innerWidth)
     const [open, setOpen] = useState(false)
-    const {x, y}=useMousePosition()
+    const { x, y } = useMousePosition()
     const [isPlaying, setIsPlaying] = useState(true)
-    
+
     useAudio({
         src: "/bgMusic.mp3",
         volume: 0.5,
@@ -38,64 +39,64 @@ function Layout() {
         isPlaying,
     });
 
-    useEffect(()=>{
-        if(innerWidth<768){
+    useEffect(() => {
+        if (innerWidth < 768) {
             setIsMobile(true)
-        }else{
+        } else {
             setIsMobile(false)
         }
 
-        window.addEventListener('resize', ()=>setInnerWidth(window.innerWidth))
-        return ()=>window.removeEventListener('resize', ()=>setInnerWidth(window.innerWidth))
+        window.addEventListener('resize', () => setInnerWidth(window.innerWidth))
+        return () => window.removeEventListener('resize', () => setInnerWidth(window.innerWidth))
     }, [innerWidth, setIsMobile])
 
-    useGSAP(()=>{ 
-        gsap.registerPlugin(ScrollTrigger, ScrollSmoother)  
-        const lenis=new Lenis({
-            smoothWheel:true,
+    useGSAP(() => {
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
+        const lenis = new Lenis({
+            smoothWheel: true,
             lerp: 1,
             syncTouch: true,
             syncTouchLerp: 0.1,
-            easing: (x)=>1 - (1 - x) * (1 - x)
-        })   
+            easing: (x) => 1 - (1 - x) * (1 - x)
+        })
         lenis.on('scroll', ScrollTrigger.update);
         gsap.ticker.add((time) => {
             lenis.raf(time * 1000);
         });
         gsap.ticker.lagSmoothing(0);
-        gsap.to('.mask',{
-            maskPosition: `${x-maskSize/2}px ${y-maskSize/2}px`,
-            maskSize: isMaskActive?`${maskSize}px`:'0px',
+        gsap.to('.mask', {
+            maskPosition: `${x - maskSize / 2}px ${y - maskSize / 2}px`,
+            maskSize: isMaskActive ? `${maskSize}px` : '0px',
             duration: 1.2,
             ease: "power4.out",
         })
     }, [x, y]);
 
     const navLinks = [
-        { id: "mgss", label: "HOME"},
+        { id: "mgss", label: "HOME" },
         { id: "about", label: "ABOUT" },
         { id: "wid", label: "WHAT I DO" },
         { id: "projects", label: "PROJECTS" }
     ];
 
     const socialIcons = [
-        { 
-            id: 1, 
-            src: FaLinkedinIn, 
-            alt: "LinkedIn", 
-            link: "https://www.linkedin.com/in/iampratt/" 
+        {
+            id: 1,
+            src: FaLinkedinIn,
+            alt: "LinkedIn",
+            link: "https://www.linkedin.com/in/iampratt/"
         },
-        { 
-            id: 2, 
-            src: FaGithub, 
-            alt: "GitHub", 
-            link: "https://github.com/iampratt" 
+        {
+            id: 2,
+            src: FaGithub,
+            alt: "GitHub",
+            link: "https://github.com/iampratt"
         },
-        { 
-            id: 3, 
-            src: FaTwitter, 
-            alt: "Twitter", 
-            link: "https://x.com/iampratt__" 
+        {
+            id: 3,
+            src: FaTwitter,
+            alt: "Twitter",
+            link: "https://x.com/iampratt__"
         },
         // { 
         //     id: 4, 
@@ -105,220 +106,221 @@ function Layout() {
         // },
     ];
 
-  return (
-    <div className="relative w-[100dvw] ">
-        <div className={`absolute w-full ${!isMaskActive && 'z-10'}`}>
-            <div>
-                <Mgss />
-                <About />
-                <Wid />
-                <Projects />
-                {/* <Footer /> */}
-            </div>
-            <div className="fixed">
-                {/* Logo */}
-                <img
-                    className="fixed w-10 h-10 top-[1.5%] lg:top-[5%] left-[5%] lg:left-[3%]"
-                    alt="Icon"
-                    src="/icon.svg"
-                />
+    return (
+        <div className="relative w-[100dvw] ">
+            <div className={`absolute w-full ${!isMaskActive && 'z-10'}`}>
+                <div>
+                    <Mgss />
+                    <About />
+                    <Wid />
+                    <Projects />
+                    {/* <Footer /> */}
+                    <MobileNotice />
+                </div>
+                <div className="fixed">
+                    {/* Logo */}
+                    <img
+                        className="fixed w-10 h-10 top-[1.5%] lg:top-[5%] left-[5%] lg:left-[3%]"
+                        alt="Icon"
+                        src="/icon.svg"
+                    />
 
-                {/* Navigation */}
-                <nav className={`${isMobile && 'hidden'} fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]`}>
-                    <ul className="flex flex-col gap-2.5">
-                        {navLinks.map((link) => (
-                            <li key={link.id} className="relative">
-                                <div onClick={()=>document.getElementById(link.id)?.scrollIntoView({behavior: 'smooth'})} className="[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98]">
-                                    {link.label}
-                                </div>
-                            </li>
+                    {/* Navigation */}
+                    <nav className={`${isMobile && 'hidden'} fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]`}>
+                        <ul className="flex flex-col gap-2.5">
+                            {navLinks.map((link) => (
+                                <li key={link.id} className="relative">
+                                    <div onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })} className="[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#b7ab98]">
+                                        {link.label}
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
+                    {/* Social media links */}
+                    <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2`}>
+                        {socialIcons.map((icon) => (
+                            <Magnet padding={20} disabled={false} magnetStrength={1}>
+                                <icon.src
+                                    key={icon.id}
+                                    color="#B7AB98"
+                                    className="w-5 h-5 mix-blend-difference"
+                                    onClick={() => window.open(icon.link, '_blank', 'noopener,noreferrer')}
+                                />
+                            </Magnet>
                         ))}
-                    </ul>
-                </nav>
-
-                {/* Social media links */}
-                <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2`}>
-                    {socialIcons.map((icon) => (
-                        <Magnet padding={20} disabled={false} magnetStrength={1}>
-                            <icon.src
-                                key={icon.id}
-                                color="#B7AB98"
-                                className="w-5 h-5 mix-blend-difference"
-                                onClick={()=>window.open(icon.link, '_blank', 'noopener,noreferrer')}
-                            />
-                        </Magnet>
-                    ))}
-                </div>
-
-                {/* Sound toggle */}
-                <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] right-[10%] lg:right-[6%] -rotate-90`}>
-                    <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
-                        SOUND
                     </div>
-                    <div className="flex absolute top-px left-[59px]">
-                        <div onClick={()=>setIsPlaying(!isPlaying)} className={`${!isPlaying? 'hidden':''} [font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
-                            ON
+
+                    {/* Sound toggle */}
+                    <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] right-[10%] lg:right-[6%] -rotate-90`}>
+                        <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
+                            SOUND
                         </div>
-                        <div onClick={()=>setIsPlaying(!isPlaying)} className={`${isPlaying? 'hidden':''} [font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
-                            OFF
+                        <div className="flex absolute top-px left-[59px]">
+                            <div onClick={() => setIsPlaying(!isPlaying)} className={`${!isPlaying ? 'hidden' : ''} [font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
+                                ON
+                            </div>
+                            <div onClick={() => setIsPlaying(!isPlaying)} className={`${isPlaying ? 'hidden' : ''} [font-family:'Inter',Helvetica] font-bold text-[#b7ab98] text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
+                                OFF
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Hamburger */}
-                {isMobile && 
-                    <div>
-                        {/* Hamburger Icon */}
-                        {/* <button
+                    {/* Hamburger */}
+                    {isMobile &&
+                        <div>
+                            {/* Hamburger Icon */}
+                            {/* <button
                             className="z-50 fixed top-5 right-5 w-10 h-10 flex items-center justify-center"
                             onClick={() => setOpen((v) => !v)}
                             aria-label="Toggle menu"
                         > */}
                             <Hamburger />
-                        {/* Overlay Menu */}
-                        {open && (
-                            <div className="fixed inset-0 z-40 bg-[#0d0d0d]/90 flex flex-col items-center justify-center transition-all">
-                                <nav>
-                                    <ul className="flex flex-col gap-8 items-center">
-                                        {navLinks.map((link) => (
-                                            <li key={link.id}>
-                                                <button
-                                                    className="text-[#b7ab98] text-2xl font-bold tracking-widest"
-                                                    onClick={() => {
-                                                        setOpen(false)
-                                                        document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })
-                                                    }}
-                                                >
-                                                    {link.label}
-                                                </button>
-                                            </li>
+                            {/* Overlay Menu */}
+                            {open && (
+                                <div className="fixed inset-0 z-40 bg-[#0d0d0d]/90 flex flex-col items-center justify-center transition-all">
+                                    <nav>
+                                        <ul className="flex flex-col gap-8 items-center">
+                                            {navLinks.map((link) => (
+                                                <li key={link.id}>
+                                                    <button
+                                                        className="text-[#b7ab98] text-2xl font-bold tracking-widest"
+                                                        onClick={() => {
+                                                            setOpen(false)
+                                                            document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })
+                                                        }}
+                                                    >
+                                                        {link.label}
+                                                    </button>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </nav>
+                                    <div className="flex gap-8 mt-12">
+                                        {socialIcons.map((icon) => (
+                                            <Magnet padding={20} disabled={false} magnetStrength={1}>
+                                                <icon.src
+                                                    key={icon.id}
+                                                    className="w-5 h-5 mix-blend-difference"
+                                                    onClick={() => window.open(icon.link, '_blank', 'noopener,noreferrer')}
+                                                />
+                                            </Magnet>
                                         ))}
-                                    </ul>
-                                </nav>
-                                <div className="flex gap-8 mt-12">
-                                    {socialIcons.map((icon) => (
-                                        <Magnet padding={20} disabled={false} magnetStrength={1}>
-                                            <icon.src
-                                                key={icon.id}
-                                                className="w-5 h-5 mix-blend-difference"
-                                                onClick={()=>window.open(icon.link, '_blank', 'noopener,noreferrer')}
-                                            />
-                                        </Magnet>
-                                    ))}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                    </div>}
+                            )}
+                        </div>}
+                </div>
             </div>
-        </div>
 
-        
-        <div className={`${isMobile?'hidden':'mask'} absolute w-full`}>
-            <div>
-                <MaskMgss />
-                <MaskAbout />
-                <MaskWid />
-                <MaskProjects />
-                {/* <div className="h-screen bg-[#0d0d0d]">hello</div> */}
-            </div>
-            <div className="fixed">
-                {/* Logo */}
-                <img
-                    className={`fixed w-10 h-10 top-[1.5%] lg:top-[5%] left-[5%] lg:left-[3%] ${isMaskActive && 'contrast-200 invert grayscale'}`}
-                    alt="Icon"
-                    src="/icon.svg"
-                />
 
-                {/* Navigation */}
-                <nav className={`${isMobile && 'hidden'} fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]`}>
-                    <ul className="flex flex-col gap-2.5">
-                        {navLinks.map((link) => (
-                        <li key={link.id} className="relative">
-                            <div onClick={()=>document.getElementById(link.id)?.scrollIntoView({behavior: 'smooth'})} className={`[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#0d0d0d] cursor-pointer`}>
-                                {link.label}
-                            </div>
-                        </li>
+            <div className={`${isMobile ? 'hidden' : 'mask'} absolute w-full`}>
+                <div>
+                    <MaskMgss />
+                    <MaskAbout />
+                    <MaskWid />
+                    <MaskProjects />
+                    {/* <div className="h-screen bg-[#0d0d0d]">hello</div> */}
+                </div>
+                <div className="fixed">
+                    {/* Logo */}
+                    <img
+                        className={`fixed w-10 h-10 top-[1.5%] lg:top-[5%] left-[5%] lg:left-[3%] ${isMaskActive && 'contrast-200 invert grayscale'}`}
+                        alt="Icon"
+                        src="/icon.svg"
+                    />
+
+                    {/* Navigation */}
+                    <nav className={`${isMobile && 'hidden'} fixed top-[1.5%] lg:top-[5%] right-[5%] lg:right-[3%]`}>
+                        <ul className="flex flex-col gap-2.5">
+                            {navLinks.map((link) => (
+                                <li key={link.id} className="relative">
+                                    <div onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })} className={`[font-family:'Nunito_Sans',Helvetica] font-bold text-[13.3px] text-[#0d0d0d] cursor-pointer`}>
+                                        {link.label}
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
+                    {/* Social media links */}
+                    <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2`}>
+                        {socialIcons.map((icon) => (
+                            <Magnet padding={20} disabled={false} magnetStrength={1}>
+                                <icon.src
+                                    key={icon.id}
+                                    className="w-5 h-5 mix-blend-difference"
+                                    onClick={() => window.open(icon.link, '_blank', 'noopener,noreferrer')}
+                                />
+                            </Magnet>
                         ))}
-                    </ul>
-                </nav>
-
-                {/* Social media links */}
-                <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] left-[5%] lg:left-[3%] flex flex-col gap-[30px] p-2`}>
-                    {socialIcons.map((icon) => (
-                        <Magnet padding={20} disabled={false} magnetStrength={1}>
-                            <icon.src
-                                key={icon.id}
-                                className="w-5 h-5 mix-blend-difference"
-                                onClick={()=>window.open(icon.link, '_blank', 'noopener,noreferrer')}
-                            />
-                        </Magnet>
-                    ))}
-                </div>
-
-                {/* Sound toggle */}
-                <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] right-[10%] lg:right-[6%] -rotate-90`}>
-                    <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
-                        SOUND
                     </div>
-                    <div className="flex absolute top-px left-[59px]">
-                        <div onClick={()=>setIsPlaying(!isPlaying)} className={`${!isPlaying?'hidden':''} [font-family:'Inter',Helvetica] font-bold text-[#0d0d0d] cursor-pointer text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
-                        ON
-                        </div>
-                        <div onClick={()=>setIsPlaying(!isPlaying)} className={`${isPlaying?'hidden':''} [font-family:'Inter',Helvetica] font-bold text-[#0d0d0d] cursor-pointer text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
-                        OFF
-                        </div>
-                    </div>
-                </div>
 
-                {/* Hamburger */}
-                {isMobile && 
-                    <div>
-                        {/* Hamburger Icon */}
-                        <button
-                            className="z-50 fixed top-5 right-5 w-10 h-10 flex items-center justify-center"
-                            onClick={() => setOpen((v) => !v)}
-                            aria-label="Toggle menu"
-                        >
-                            <Hamburger />
-                        </button>
-                        {/* Overlay Menu */}
-                        {open && (
-                            <div className="fixed inset-0 z-40 bg-[#0d0d0d]/90 flex flex-col items-center justify-center transition-all">
-                                <nav>
-                                    <ul className="flex flex-col gap-8 items-center">
-                                        {navLinks.map((link) => (
-                                            <li key={link.id}>
-                                                <button
-                                                    className="text-[#b7ab98] text-2xl font-bold tracking-widest"
-                                                    onClick={() => {
-                                                        setOpen(false)
-                                                        document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })
-                                                    }}
-                                                >
-                                                    {link.label}
-                                                </button>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </nav>
-                                <div className="flex gap-8 mt-12">
-                                    {socialIcons.map((icon) => (
-                                        <Magnet padding={20} disabled={false} magnetStrength={1}>
-                                            <icon.src
-                                                key={icon.id}
-                                                className="w-5 h-5 mix-blend-difference"
-                                                onClick={()=>window.open(icon.link, '_blank', 'noopener,noreferrer')}
-                                            />
-                                        </Magnet>
-                                    ))}
-                                </div>
+                    {/* Sound toggle */}
+                    <div className={`${isMobile && 'hidden'} fixed bottom-[1.5%] lg:bottom-[5%] right-[10%] lg:right-[6%] -rotate-90`}>
+                        <div className="absolute h-[18px] top-0 left-1.5 [font-family:'Inter',Helvetica] font-bold text-[#4d4d4d] text-[13.2px] leading-[17.3px] whitespace-nowrap">
+                            SOUND
+                        </div>
+                        <div className="flex absolute top-px left-[59px]">
+                            <div onClick={() => setIsPlaying(!isPlaying)} className={`${!isPlaying ? 'hidden' : ''} [font-family:'Inter',Helvetica] font-bold text-[#0d0d0d] cursor-pointer text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
+                                ON
                             </div>
-                        )}
-                    </div>}
+                            <div onClick={() => setIsPlaying(!isPlaying)} className={`${isPlaying ? 'hidden' : ''} [font-family:'Inter',Helvetica] font-bold text-[#0d0d0d] cursor-pointer text-[13.2px] leading-[17.3px] whitespace-nowrap ml-2`}>
+                                OFF
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Hamburger */}
+                    {isMobile &&
+                        <div>
+                            {/* Hamburger Icon */}
+                            <button
+                                className="z-50 fixed top-5 right-5 w-10 h-10 flex items-center justify-center"
+                                onClick={() => setOpen((v) => !v)}
+                                aria-label="Toggle menu"
+                            >
+                                <Hamburger />
+                            </button>
+                            {/* Overlay Menu */}
+                            {open && (
+                                <div className="fixed inset-0 z-40 bg-[#0d0d0d]/90 flex flex-col items-center justify-center transition-all">
+                                    <nav>
+                                        <ul className="flex flex-col gap-8 items-center">
+                                            {navLinks.map((link) => (
+                                                <li key={link.id}>
+                                                    <button
+                                                        className="text-[#b7ab98] text-2xl font-bold tracking-widest"
+                                                        onClick={() => {
+                                                            setOpen(false)
+                                                            document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })
+                                                        }}
+                                                    >
+                                                        {link.label}
+                                                    </button>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </nav>
+                                    <div className="flex gap-8 mt-12">
+                                        {socialIcons.map((icon) => (
+                                            <Magnet padding={20} disabled={false} magnetStrength={1}>
+                                                <icon.src
+                                                    key={icon.id}
+                                                    className="w-5 h-5 mix-blend-difference"
+                                                    onClick={() => window.open(icon.link, '_blank', 'noopener,noreferrer')}
+                                                />
+                                            </Magnet>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>}
+                </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Layout
