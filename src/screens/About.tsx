@@ -36,7 +36,7 @@ function About() {
     }, [])
 
     return (
-        <div id='about' className='relative w-full h-[100dvh] bg-[#0d0d0d] flex justify-center items-center'>
+        <div id='about' className='relative w-full h-[100dvh] bg-[#0d0d0d] flex justify-center items-start pt-[33vh]'>
             <div className="absolute h-screen w-full opacity-20">
                 <Suspense fallback={<LoadingSpinner />}>
                     <Face />

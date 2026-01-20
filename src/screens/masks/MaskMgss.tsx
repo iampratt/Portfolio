@@ -17,7 +17,7 @@ function MaskMgss() {
     return (
         <>
             <div className="relative w-full h-[100dvh] overflow-hidden">
-                <div className="flex flex-col lg:gap-3 mx-auto py-16 items-center justify-center min-h-screen">
+                <div className="flex flex-col lg:gap-3 mx-auto py-16 items-center justify-center min-h-screen overflow-hidden">
                     <div className="text-center">
                         <div className="font-bold text-[10px] lg:text-[13.9px] tracking-[4px] lg:tracking-[6.67px] leading-[17.3px] text-[#0d0d0d]">
                             PRATYUSH SRIVASTAVA
@@ -38,7 +38,7 @@ function MaskMgss() {
                             <div className="font-bold text-[2.8em] lg:text-[138.1px] tracking-[-2px] lg:tracking-[-5.83px] leading-tight lg:leading-[98px]">
                                 SINCE
                             </div>
-                            <div className="font-bold text-[2.8em] lg:text-[138.1px] tracking-[-2px] lg:tracking-[-5.83px] leading-tight lg:leading-[98px]">
+                            <div className="font-bold text-[4.5em] -mb-5 lg:mb-0 lg:text-[138.1px] tracking-[-5.83px] leading-[98px]">
                                 2023
                             </div>
                         </div>
