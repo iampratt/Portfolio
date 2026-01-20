@@ -2,9 +2,7 @@ import { useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import useStore from "../store/store";
-import Hamburger from "./hamburger";
 import Magnet from "./Magnet";
-import { FaLinkedinIn, FaGithub, FaTwitter } from 'react-icons/fa6';
 
 const navLinks = [
     { id: "mgss", label: "HOME" },
@@ -12,27 +10,6 @@ const navLinks = [
     { id: "wid", label: "WHAT I DO" },
     { id: "projects", label: "PROJECTS" },
     { id: "contact", label: "CONTACT" }
-];
-
-const socialIcons = [
-    {
-        id: 1,
-        src: FaLinkedinIn,
-        alt: "LinkedIn",
-        link: "https://www.linkedin.com/in/iampratt/"
-    },
-    {
-        id: 2,
-        src: FaGithub,
-        alt: "GitHub",
-        link: "https://github.com/iampratt"
-    },
-    {
-        id: 3,
-        src: FaTwitter,
-        alt: "Twitter",
-        link: "https://x.com/iampratt__"
-    }
 ];
 
 const Navbar = () => {
