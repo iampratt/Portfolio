@@ -4,6 +4,9 @@
 
 A highly interactive, 3D immersive portfolio website built with modern web technologies. This project features advanced animations, smooth scrolling, and a unique masking effect that reveals content based on cursor interaction.
 
+
+<img width="1470" height="923" alt="Screenshot 2026-01-29 at 10 27 37" src="https://github.com/user-attachments/assets/6676771e-502c-40a5-b28d-c0d4fd009db0" />
+
 ## 🌟 Key Features
 
 *   **Immersive 3D Experience**: Integrated 3D models and interactions using **Three.js** and **React Three Fiber**.
