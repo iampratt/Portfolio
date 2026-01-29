@@ -1,54 +1,51 @@
-# React + TypeScript + Vite
+# Portfolio 2026
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Visit Live Site](https://iampratt.vercel.app/)
 
-Currently, two official plugins are available:
+A highly interactive, 3D immersive portfolio website built with modern web technologies. This project features advanced animations, smooth scrolling, and a unique masking effect that reveals content based on cursor interaction.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Key Features
 
-## Expanding the ESLint configuration
+*   **Immersive 3D Experience**: Integrated 3D models and interactions using **Three.js** and **React Three Fiber**.
+*   **Dynamic Masking System**: A custom cursor-based masking effect that acts as a spotlight, revealing hidden layers of the UI as you explore.
+*   **Smooth Animations**: Powered by **GSAP** and **Framer Motion** for fluid page transitions, complex sequences, and scroll-linked animations.
+*   **Horizontal Scroll Gallery**: A custom "Selected Works" section featuring a horizontal scroll layout implemented with GSAP ScrollTrigger.
+*   **Asset Preloading**: A dedicated preloader screen ensures all 3D assets, textures, and media are fully loaded before the experience begins.
+*   **Audio Integration**: Background ambience with user controls for an atmospheric experience.
+*   **Responsive Design**: Tailored layouts and interactions optimized for both desktop and mobile devices.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠 Tech Stack
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+*   **Framework**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/) + [TypeScript](https://www.typescriptlang.org/)
+*   **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+*   **3D Graphics**: [Three.js](https://threejs.org/) + [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) + [Drei](https://github.com/pmndrs/drei)
+*   **Animations**: [GSAP](https://gsap.com/) + [Framer Motion](https://www.framer.com/motion/)
+*   **Scrolling**: [Lenis](https://lenis.darkroom.engineering/) (Smooth scroll)
+*   **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+*   **UI Components**: [Radix UI](https://www.radix-ui.com/) + React Icons
+
+## 📂 Project Structure
+
+```
+src/
+├── components/      # Reusable UI components & 3D models
+│   ├── 3d/          # React Three Fiber components (Coffee, Computer, Face, etc.)
+│   ├── Navbar.tsx   # Navigation component
+│   └── ...
+├── screens/         # Main page sections
+│   ├── masks/       # Mask layer variants for each section (The "flashlight" reveal content)
+│   ├── About.tsx    # "About Me" section
+│   ├── Projects.tsx # "Selected Works" section
+│   ├── Intro.tsx    # Initial loading screen
+│   └── ...
+├── store/           # Global state management (Zustand)
+├── utils/           # Custom hooks (useAudio, useMousePosition, etc.)
+└── App.tsx          # Application entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 Design Philosophy
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+The design follows a "Cinematic Dark Mode" aesthetic, leveraging glassmorphism and high-contrast typography. 
+*   **Inter Font**: Used for clean, modern readability.
+*   **Magnetic Cursors**: Buttons and interactive elements utilize magnetic pulls for a tactile feel.
+*   **Masking**: The core mechanic involves a top layer and a masked bottom layer, creating a depth effect where the user "discovers" content.
